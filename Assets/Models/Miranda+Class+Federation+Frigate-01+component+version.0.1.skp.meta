@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: 58a49254146fbba4a848a682fc78602a
+timeCreated: 1519741092
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 00000000010000000200000003000000
+  assetHash:
+    serializedVersion: 2
+    Hash: f7bc97bc85f97310ae0dc6f45a9f2f96
+  longitude: -105.283
+  latitude: 40.017
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 51.112514, y: 30.877773, z: -1.5650784}
+      lookAt: {x: 20.099842, y: 11.801542, z: 34.10556}
+      up: {x: -0.24555351, y: 0.9273264, z: 0.28243455}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Miranda class component ver.0.1
+    100002: //RootNode
+    400000: Miranda class component ver.0.1
+    400002: //RootNode
+    2100000: _defaultMat
+    2100002: '[0035_Tan]'
+    2100004: '[Color_007]'
+    2100006: '[0019_Crimson]'
+    2100008: '[Color_000]'
+    2100010: '[0094_PowderBlue]'
+    2100012: '[0035_Tan]1'
+    2100014: '[Color_I03]'
+    2100016: '[Color_009]'
+    2100018: '[0030_OldLace]'
+    2100020: '[Color_008]'
+    2100022: '[Color_A01]'
+    2100024: '[Color_005]'
+    2100026: '[0037_SandyBrown]'
+    2100028: '[0135_DarkGray]'
+    2100030: '[Color_002]'
+    2300000: Miranda class component ver.0.1
+    2300002: //RootNode
+    3300000: Miranda class component ver.0.1
+    3300002: //RootNode
+    4300000: Mesh Miranda+Class+Federation+Frigate-01+component+version.0.1
+    4300002: Mesh Miranda class component ver.0.1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

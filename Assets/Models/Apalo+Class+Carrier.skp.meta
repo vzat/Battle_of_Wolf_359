@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: e04cd6314286d5d4a8e36f82e55473e6
+timeCreated: 1519741094
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 0000000001000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 5ddaad0ad02d73f9c545331164d92196
+  longitude: -105.242139
+  latitude: 40.018309
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 361.42575, y: 90.2133, z: -83.00615}
+      lookAt: {x: 146.17172, y: 84.62271, z: 116.87179}
+      up: {x: -0.013944169, y: 0.9998189, z: 0.012948103}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2100000: _6
+    2100002: '[0137_Black]'
+    2100004: _Gray6_
+    2100006: '[Color_003]'
+    2100008: _3
+    2100010: '[Color_004]'
+    2100012: _Redwood_
+    2100014: '[0132_LightGray]'
+    2100016: '[Color_A01]1'
+    2100018: '[0128_White]'
+    2100020: _2
+    2100022: _Charcoal_
+    2100024: _10
+    2100026: '[0135_DarkGray]'
+    2100028: '[0019_Crimson]'
+    2100030: '[0039_DarkOrange]'
+    2100032: '[0136_Charcoal]'
+    2100034: _11
+    2100036: '[0131_Silver]'
+    2100038: _17
+    2100040: '[0097_DeepSkyBlue]'
+    2100042: '[Color_F01]2'
+    2100044: '[0046_Gold]1'
+    2100046: _33
+    2100048: _7
+    2100050: _1
+    2100052: '[0133_Gray]'
+    2100054: '[0098_DodgerBlue]1'
+    2100056: _DimGray_
+    2100058: '[0137_Black]1'
+    2100060: _12
+    2100062: _5
+    2100064: _4
+    2100066: '[Color_A07]'
+    2100068: '[0081_CadetBlue]1'
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Mesh Apalo+Class+Carrier
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

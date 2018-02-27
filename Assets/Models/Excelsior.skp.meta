@@ -1,0 +1,342 @@
+fileFormatVersion: 2
+guid: 4c28f4e181b35fc48a9afc06cffe830e
+timeCreated: 1519741089
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 61fa4c030527a6452b24d3e6a115d2de
+  longitude: -105.283
+  latitude: 40.017
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 7.9447947, y: 2.789884, z: -3.2551458}
+      lookAt: {x: -6.983669, y: -1.1638936, z: 15.815498}
+      up: {x: -0.09931434, y: 0.9869349, z: 0.12687096}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bextends_b
+    100002: black_plst
+    100004: c_hull_bla
+    100006: c_hull_pan
+    100008: c_hull_ver
+    100010: c_navs
+    100012: c_navsgree
+    100014: c_navsred
+    100016: c_phasers
+    100018: c_strobe
+    100020: chrome_gif
+    100022: dark_hull
+    100024: deflector
+    100026: //RootNode
+    100028: 'Excelsior Class '
+    100030: fusion_glo
+    100032: hull_light
+    100034: hull_panel
+    100036: hull_rib_c
+    100038: hull_sg_bl
+    100040: hull_sleev
+    100042: hull_text0
+    100044: hull_text1
+    100046: hull_text2
+    100048: hull_text3
+    100050: hull_text4
+    100052: hull_text5
+    100054: impulse_g0
+    100056: impulse_g1
+    100058: impulse_pn
+    100060: insignia_g
+    100062: light_glow
+    100064: red_plstc
+    100066: scbaylight
+    100068: strut_deta
+    100070: warp_engin
+    100072: warp_glow
+    100074: window_glo
+    100076: window_out
+    100078: window_whi
+    400000: bextends_b
+    400002: black_plst
+    400004: c_hull_bla
+    400006: c_hull_pan
+    400008: c_hull_ver
+    400010: c_navs
+    400012: c_navsgree
+    400014: c_navsred
+    400016: c_phasers
+    400018: c_strobe
+    400020: chrome_gif
+    400022: dark_hull
+    400024: deflector
+    400026: //RootNode
+    400028: 'Excelsior Class '
+    400030: fusion_glo
+    400032: hull_light
+    400034: hull_panel
+    400036: hull_rib_c
+    400038: hull_sg_bl
+    400040: hull_sleev
+    400042: hull_text0
+    400044: hull_text1
+    400046: hull_text2
+    400048: hull_text3
+    400050: hull_text4
+    400052: hull_text5
+    400054: impulse_g0
+    400056: impulse_g1
+    400058: impulse_pn
+    400060: insignia_g
+    400062: light_glow
+    400064: red_plstc
+    400066: scbaylight
+    400068: strut_deta
+    400070: warp_engin
+    400072: warp_glow
+    400074: window_glo
+    400076: window_out
+    400078: window_whi
+    2100000: _defaultMat
+    2100002: red_plstc1
+    2100004: scbaylighting1
+    2100006: strut_detail1
+    2100008: warp_engines1
+    2100010: warp_glow1
+    2100012: window_glow1
+    2100014: window_out1
+    2100016: window_white1
+    2100018: black_plstc1
+    2100020: c_hull_very_dark1
+    2100022: c_navs1
+    2100024: bextends_bay1
+    2100026: c_hull_panels1
+    2100028: fusion_glow1
+    2100030: hull_light_grey1
+    2100032: hull_panel_bumps1
+    2100034: c_phasers1
+    2100036: c_strobe1
+    2100038: c_hull_black1
+    2100040: dark_hull_textur1
+    2100042: deflector_glow1
+    2100044: chrome_gifmap1
+    2100046: c_navsgreen1
+    2100048: c_navsred1
+    2100050: hull_texture_blu1
+    2100052: hull_texture_1
+    2100054: impulse_glow_lo1
+    2100056: impulse_glow_hi1
+    2100058: impulse_pnl_colr1
+    2100060: insignia_gold1
+    2100062: light_glow1
+    2100064: hull_rib_color1
+    2100066: hull_sg_black1
+    2100068: hull_sleeve1
+    2100070: hull_texture_rte1
+    2100072: hull_texture_rbx1
+    2100074: hull_texture_rbe1
+    2300000: bextends_b
+    2300002: black_plst
+    2300004: c_hull_bla
+    2300006: c_hull_pan
+    2300008: c_hull_ver
+    2300010: c_navs
+    2300012: c_navsgree
+    2300014: c_navsred
+    2300016: c_phasers
+    2300018: c_strobe
+    2300020: chrome_gif
+    2300022: dark_hull
+    2300024: deflector
+    2300026: 'Excelsior Class '
+    2300028: fusion_glo
+    2300030: hull_light
+    2300032: hull_panel
+    2300034: hull_rib_c
+    2300036: hull_sg_bl
+    2300038: hull_sleev
+    2300040: hull_text0
+    2300042: hull_text1
+    2300044: hull_text2
+    2300046: hull_text3
+    2300048: hull_text4
+    2300050: hull_text5
+    2300052: impulse_g0
+    2300054: impulse_g1
+    2300056: impulse_pn
+    2300058: insignia_g
+    2300060: light_glow
+    2300062: red_plstc
+    2300064: scbaylight
+    2300066: strut_deta
+    2300068: warp_engin
+    2300070: warp_glow
+    2300072: window_glo
+    2300074: window_out
+    2300076: window_whi
+    3300000: bextends_b
+    3300002: black_plst
+    3300004: c_hull_bla
+    3300006: c_hull_pan
+    3300008: c_hull_ver
+    3300010: c_navs
+    3300012: c_navsgree
+    3300014: c_navsred
+    3300016: c_phasers
+    3300018: c_strobe
+    3300020: chrome_gif
+    3300022: dark_hull
+    3300024: deflector
+    3300026: 'Excelsior Class '
+    3300028: fusion_glo
+    3300030: hull_light
+    3300032: hull_panel
+    3300034: hull_rib_c
+    3300036: hull_sg_bl
+    3300038: hull_sleev
+    3300040: hull_text0
+    3300042: hull_text1
+    3300044: hull_text2
+    3300046: hull_text3
+    3300048: hull_text4
+    3300050: hull_text5
+    3300052: impulse_g0
+    3300054: impulse_g1
+    3300056: impulse_pn
+    3300058: insignia_g
+    3300060: light_glow
+    3300062: red_plstc
+    3300064: scbaylight
+    3300066: strut_deta
+    3300068: warp_engin
+    3300070: warp_glow
+    3300072: window_glo
+    3300074: window_out
+    3300076: window_whi
+    4300000: Mesh red_plstc
+    4300002: Mesh scbaylight
+    4300004: Mesh strut_deta
+    4300006: Mesh warp_engin
+    4300008: Mesh warp_glow
+    4300010: Mesh window_glo
+    4300012: Mesh window_out
+    4300014: Mesh window_whi
+    4300016: Mesh black_plst
+    4300018: Mesh c_hull_ver
+    4300020: Mesh c_navs
+    4300022: Mesh bextends_b
+    4300024: Mesh c_hull_pan
+    4300026: Mesh fusion_glo
+    4300028: Mesh hull_light
+    4300030: Mesh hull_panel
+    4300032: Mesh c_phasers
+    4300034: Mesh c_strobe
+    4300036: Mesh c_hull_bla
+    4300038: Mesh dark_hull
+    4300040: Mesh deflector
+    4300042: Mesh chrome_gif
+    4300044: Mesh c_navsgree
+    4300046: Mesh c_navsred
+    4300048: Mesh hull_text3
+    4300050: Mesh hull_text4
+    4300052: Mesh hull_text5
+    4300054: Mesh impulse_g0
+    4300056: Mesh impulse_g1
+    4300058: Mesh impulse_pn
+    4300060: Mesh insignia_g
+    4300062: Mesh light_glow
+    4300064: Mesh hull_rib_c
+    4300066: Mesh hull_sg_bl
+    4300068: Mesh hull_sleev
+    4300070: Mesh hull_text0
+    4300072: Mesh hull_text1
+    4300074: Mesh hull_text2
+    4300076: 'Mesh Excelsior Class '
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,817 @@
+fileFormatVersion: 2
+guid: ddf78da4102cf28468edc49b8904f748
+timeCreated: 1519742486
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000062000000630000006400000065000000660000006700000068000000690000006a0000006b0000006c0000006d0000006e0000006f000000700000007100000072000000730000007400000075000000760000007700000078000000790000007a0000007b0000007c0000007d0000007e0000007f000000800000008100000082000000830000008400000085000000860000008700000088000000890000008a0000008b0000008c0000008d0000008e0000008f000000900000009100000092000000930000009400000095000000960000009700000098000000990000009a0000009b0000009c0000009d0000009e0000009f000000a0000000a1000000a2000000a3000000a4000000a5000000a6000000a7000000a8000000a9000000aa000000ab000000ac000000ad000000ae000000af000000b0000000b1000000b2000000b3000000b4000000b5000000b6000000b7000000b8000000b9000000ba000000bb000000bc000000bd000000be000000bf000000c0000000c1000000c2000000c3000000c4000000c5000000c6000000c7000000c8000000c9000000ca000000cb000000cc000000cd000000ce000000cf000000d0000000d1000000d2000000d3000000d4000000d5000000d6000000d7000000d8000000d9000000da000000db000000dc000000dd000000de000000df000000e0000000e1000000e2000000e3000000e4000000e5000000e6000000e7000000e8000000e9000000ea000000eb000000ec000000ed000000ee000000ef000000f0000000f1000000f2000000f3000000f4000000f5000000f6000000f7000000f8000000f9000000fa000000fb000000fc000000fd000000fe000000ff000000000100000101000002010000030100000401000005010000060100000701000008010000090100000a0100000b0100000c0100000d0100000e0100000f0100001001000011010000120100001301000014010000
+  assetHash:
+    serializedVersion: 2
+    Hash: ccc274eb96839c95dc4f76d842d18a13
+  longitude: -105.283
+  latitude: 40.017
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 116.08833, y: 98.3087, z: -40.66738}
+      lookAt: {x: 100.67651, y: 93.32039, z: -22.234436}
+      up: {x: -0.13039012, y: 0.979121, z: 0.15595011}
+      fov: 34.465603
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes:
+    - camera:
+        position: {x: 116.08833, y: 98.3087, z: -40.66738}
+        lookAt: {x: 100.67651, y: 93.32039, z: -22.234436}
+        up: {x: -0.13039012, y: 0.979121, z: 0.15595011}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Beauty Shot
+    - camera:
+        position: {x: 84.45262, y: 96.65458, z: -16.052847}
+        lookAt: {x: 72.22596, y: 89.5126, z: 3.9891517}
+        up: {x: -0.15157196, y: 0.95671046, z: 0.24845733}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Closeup
+    - camera:
+        position: {x: 115.19897, y: 105.7274, z: 45.630592}
+        lookAt: {x: 93.96635, y: 95.83091, z: 38.32196}
+        up: {x: -0.3813312, y: 0.9150722, z: -0.13126072}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Designation
+    - camera:
+        position: {x: 158.7178, y: 91.16098, z: 31.558266}
+        lookAt: {x: 134.32338, y: 88.52749, z: 31.956018}
+        up: {x: -0.10730279, y: 0.99422485, z: 0.0017495856}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Fore
+    - camera:
+        position: {x: 124.670166, y: 62.35943, z: -12.493131}
+        lookAt: {x: 104.33151, y: 69.03251, z: -0.4935517}
+        up: {x: 0.23420922, y: 0.96231604, z: -0.1381808}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Below Starboard
+    - camera:
+        position: {x: -24.207115, y: 64.72974, z: -12.207287}
+        lookAt: {x: -5.89679, y: 72.74629, z: 2.0281446}
+        up: {x: -0.25790733, y: 0.9451345, z: -0.20051101}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Below Aft
+    - camera:
+        position: {x: -68.66081, y: 104.95399, z: -12.287769}
+        lookAt: {x: -47.71081, y: 98.223076, z: -1.4262345}
+        up: {x: 0.2435093, y: 0.9616469, z: 0.12624745}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: From Behind
+    - camera:
+        position: {x: 50.128567, y: 94.25007, z: -77.867}
+        lookAt: {x: 48.39918, y: 91.0932, z: -53.593056}
+        up: {x: -0.009142091, y: 0.99169075, z: 0.12831978}
+        fov: 34.465603
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Starboard
+    - camera:
+        position: {x: 85.40058, y: 89.01186, z: 18.48338}
+        lookAt: {x: 64.28104, y: 82.40495, z: 7.8770456}
+        up: {x: -0.24060032, y: 0.96307397, z: -0.1208306}
+        fov: 46.535625
+        aspectRatio: 0
+        orthoSize: 1
+        isPerspective: 1
+      name: Interior 1
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bryce
+    100002: Group 1
+    100004: Group 10
+    100006: Group 114
+    100008: Group 116
+    100010: Group 124
+    100012: Group 128
+    100014: Group 132
+    100016: Group 14
+    100018: Group 140
+    100020: Group 141
+    100022: Group 143
+    100024: Group 144
+    100026: Group 15
+    100028: Group 17
+    100030: Group 18
+    100032: Group 209
+    100034: Group 238
+    100036: Group 240
+    100038: Group 248
+    100040: Group 252
+    100042: Group 256
+    100044: Group 276
+    100046: Group 3
+    100048: Group 4
+    100050: Group 6
+    100052: Group 8
+    100054: Group 83
+    100056: Group 85
+    100058: Group#20
+    100060: Group#20 1
+    100062: Group#21
+    100064: Group#21 1
+    100066: Hatch
+    100068: Hatch 1
+    100070: Hatch 2
+    100072: Hatch 3
+    100074: Impulse Engine
+    100076: Impulse Engine 1
+    100078: Long Window
+    100080: Long Window 1
+    100082: Long Window 10
+    100084: Long Window 11
+    100086: Long Window 12
+    100088: Long Window 13
+    100090: Long Window 14
+    100092: Long Window 15
+    100094: Long Window 16
+    100096: Long Window 17
+    100098: Long Window 18
+    100100: Long Window 19
+    100102: Long Window 2
+    100104: Long Window 20
+    100106: Long Window 21
+    100108: Long Window 22
+    100110: Long Window 23
+    100112: Long Window 24
+    100114: Long Window 3
+    100116: Long Window 4
+    100118: Long Window 5
+    100120: Long Window 6
+    100122: Long Window 7
+    100124: Long Window 8
+    100126: Long Window 9
+    100128: Long Window#1
+    100130: Long Window#1 1
+    100132: Long Window#1 10
+    100134: Long Window#1 11
+    100136: Long Window#1 12
+    100138: Long Window#1 13
+    100140: Long Window#1 14
+    100142: Long Window#1 15
+    100144: Long Window#1 16
+    100146: Long Window#1 17
+    100148: Long Window#1 18
+    100150: Long Window#1 19
+    100152: Long Window#1 2
+    100154: Long Window#1 20
+    100156: Long Window#1 21
+    100158: Long Window#1 22
+    100160: Long Window#1 23
+    100162: Long Window#1 24
+    100164: Long Window#1 25
+    100166: Long Window#1 26
+    100168: Long Window#1 27
+    100170: Long Window#1 28
+    100172: Long Window#1 29
+    100174: Long Window#1 3
+    100176: Long Window#1 30
+    100178: Long Window#1 31
+    100180: Long Window#1 32
+    100182: Long Window#1 33
+    100184: Long Window#1 34
+    100186: Long Window#1 35
+    100188: Long Window#1 36
+    100190: Long Window#1 37
+    100192: Long Window#1 38
+    100194: Long Window#1 39
+    100196: Long Window#1 4
+    100198: Long Window#1 40
+    100200: Long Window#1 41
+    100202: Long Window#1 42
+    100204: Long Window#1 43
+    100206: Long Window#1 44
+    100208: Long Window#1 45
+    100210: Long Window#1 46
+    100212: Long Window#1 47
+    100214: Long Window#1 48
+    100216: Long Window#1 49
+    100218: Long Window#1 5
+    100220: Long Window#1 6
+    100222: Long Window#1 7
+    100224: Long Window#1 8
+    100226: Long Window#1 9
+    100228: Long Window#2
+    100230: Main Hull 1
+    100232: Main Hull 1 1
+    100234: Nacelle
+    100236: Nacelle 1
+    100238: Nacelle#1
+    100240: Nacelle#1 1
+    100242: Nozzlet
+    100244: Nozzlet 1
+    100246: Nozzlet 2
+    100248: Nozzlet 3
+    100250: Nozzlet 4
+    100252: Nozzlet 5
+    100254: //RootNode
+    100256: Saucer 1
+    100258: Saucer 1#1
+    100260: Slit Window
+    100262: Slit Window 1
+    100264: Slit Window 10
+    100266: Slit Window 11
+    100268: Slit Window 2
+    100270: Slit Window 3
+    100272: Slit Window 4
+    100274: Slit Window 5
+    100276: Slit Window 6
+    100278: Slit Window 7
+    100280: Slit Window 8
+    100282: Slit Window 9
+    100284: UNITED FEDERATIO
+    100286: UNITED FEDERATIO 1
+    400000: Bryce
+    400002: Group 1
+    400004: Group 10
+    400006: Group 114
+    400008: Group 116
+    400010: Group 124
+    400012: Group 128
+    400014: Group 132
+    400016: Group 14
+    400018: Group 140
+    400020: Group 141
+    400022: Group 143
+    400024: Group 144
+    400026: Group 15
+    400028: Group 17
+    400030: Group 18
+    400032: Group 209
+    400034: Group 238
+    400036: Group 240
+    400038: Group 248
+    400040: Group 252
+    400042: Group 256
+    400044: Group 276
+    400046: Group 3
+    400048: Group 4
+    400050: Group 6
+    400052: Group 8
+    400054: Group 83
+    400056: Group 85
+    400058: Group#20
+    400060: Group#20 1
+    400062: Group#21
+    400064: Group#21 1
+    400066: Hatch
+    400068: Hatch 1
+    400070: Hatch 2
+    400072: Hatch 3
+    400074: Impulse Engine
+    400076: Impulse Engine 1
+    400078: Long Window
+    400080: Long Window 1
+    400082: Long Window 10
+    400084: Long Window 11
+    400086: Long Window 12
+    400088: Long Window 13
+    400090: Long Window 14
+    400092: Long Window 15
+    400094: Long Window 16
+    400096: Long Window 17
+    400098: Long Window 18
+    400100: Long Window 19
+    400102: Long Window 2
+    400104: Long Window 20
+    400106: Long Window 21
+    400108: Long Window 22
+    400110: Long Window 23
+    400112: Long Window 24
+    400114: Long Window 3
+    400116: Long Window 4
+    400118: Long Window 5
+    400120: Long Window 6
+    400122: Long Window 7
+    400124: Long Window 8
+    400126: Long Window 9
+    400128: Long Window#1
+    400130: Long Window#1 1
+    400132: Long Window#1 10
+    400134: Long Window#1 11
+    400136: Long Window#1 12
+    400138: Long Window#1 13
+    400140: Long Window#1 14
+    400142: Long Window#1 15
+    400144: Long Window#1 16
+    400146: Long Window#1 17
+    400148: Long Window#1 18
+    400150: Long Window#1 19
+    400152: Long Window#1 2
+    400154: Long Window#1 20
+    400156: Long Window#1 21
+    400158: Long Window#1 22
+    400160: Long Window#1 23
+    400162: Long Window#1 24
+    400164: Long Window#1 25
+    400166: Long Window#1 26
+    400168: Long Window#1 27
+    400170: Long Window#1 28
+    400172: Long Window#1 29
+    400174: Long Window#1 3
+    400176: Long Window#1 30
+    400178: Long Window#1 31
+    400180: Long Window#1 32
+    400182: Long Window#1 33
+    400184: Long Window#1 34
+    400186: Long Window#1 35
+    400188: Long Window#1 36
+    400190: Long Window#1 37
+    400192: Long Window#1 38
+    400194: Long Window#1 39
+    400196: Long Window#1 4
+    400198: Long Window#1 40
+    400200: Long Window#1 41
+    400202: Long Window#1 42
+    400204: Long Window#1 43
+    400206: Long Window#1 44
+    400208: Long Window#1 45
+    400210: Long Window#1 46
+    400212: Long Window#1 47
+    400214: Long Window#1 48
+    400216: Long Window#1 49
+    400218: Long Window#1 5
+    400220: Long Window#1 6
+    400222: Long Window#1 7
+    400224: Long Window#1 8
+    400226: Long Window#1 9
+    400228: Long Window#2
+    400230: Main Hull 1
+    400232: Main Hull 1 1
+    400234: Nacelle
+    400236: Nacelle 1
+    400238: Nacelle#1
+    400240: Nacelle#1 1
+    400242: Nozzlet
+    400244: Nozzlet 1
+    400246: Nozzlet 2
+    400248: Nozzlet 3
+    400250: Nozzlet 4
+    400252: Nozzlet 5
+    400254: //RootNode
+    400256: Saucer 1
+    400258: Saucer 1#1
+    400260: Slit Window
+    400262: Slit Window 1
+    400264: Slit Window 10
+    400266: Slit Window 11
+    400268: Slit Window 2
+    400270: Slit Window 3
+    400272: Slit Window 4
+    400274: Slit Window 5
+    400276: Slit Window 6
+    400278: Slit Window 7
+    400280: Slit Window 8
+    400282: Slit Window 9
+    400284: UNITED FEDERATIO
+    400286: UNITED FEDERATIO 1
+    2100000: _defaultMat
+    2100002: '[Color_005]'
+    2100004: Blue_04
+    2100006: '[Translucent_Glass_Gold]'
+    2100008: Gen_OffWhite1
+    2100010: '[Color_003]'
+    2100012: '[Color_A06]'
+    2100014: '[Color_001]'
+    2100016: '[Tile_Mosaic_Multi]'
+    2100018: '[Color_C10]'
+    2100020: '[Metal_Corrogated_Shiny]'
+    2100022: '[Color_000]'
+    2100024: '[Color_007]'
+    2100026: '[Color_002]'
+    2100028: _Gray6_1
+    2100030: _Redwood_
+    2100032: '[Color_A13]'
+    2100034: '[Color_009]'
+    2100036: _DarkGoldenrod_
+    2100038: '[Color_006]1'
+    2100040: Bridge_Copper1
+    2100042: Bridge_Dome1
+    2100044: _Charcoal_
+    2100046: '[Color_A01]'
+    2100048: '[Color_B15]'
+    2100050: _Gray6_
+    2100052: _Beige_1
+    2100054: _Brown_
+    2100056: _Black_
+    2100058: jean blue
+    2100060: '[Color_H15]'
+    2100062: Grey
+    2100064: '[Translucent_Glass_Corrugated]'
+    2100066: '[Color_B12]'
+    2100068: '[Color_A19]'
+    2100070: '[Color_A18]'
+    2100072: '[Translucent_Glass_Blue]'
+    2100074: Gen_PristineWhit1
+    2100076: '[Color_I15]'
+    2100078: Blue_06
+    2100080: Red_02
+    2100082: White
+    2100084: '[Metal_Corrogated_Shiny]1'
+    2100086: '[Color_G01]'
+    2300000: Bryce
+    2300002: Group 1
+    2300004: Group 10
+    2300006: Group 114
+    2300008: Group 116
+    2300010: Group 124
+    2300012: Group 128
+    2300014: Group 132
+    2300016: Group 141
+    2300018: Group 15
+    2300020: Group 209
+    2300022: Group 238
+    2300024: Group 240
+    2300026: Group 248
+    2300028: Group 252
+    2300030: Group 256
+    2300032: Group 4
+    2300034: Group 6
+    2300036: Group 8
+    2300038: Group 83
+    2300040: Group 85
+    2300042: Group#20
+    2300044: Group#20 1
+    2300046: Group#21
+    2300048: Group#21 1
+    2300050: Hatch
+    2300052: Hatch 1
+    2300054: Hatch 2
+    2300056: Hatch 3
+    2300058: Impulse Engine
+    2300060: Impulse Engine 1
+    2300062: Long Window
+    2300064: Long Window 1
+    2300066: Long Window 10
+    2300068: Long Window 11
+    2300070: Long Window 12
+    2300072: Long Window 13
+    2300074: Long Window 14
+    2300076: Long Window 15
+    2300078: Long Window 16
+    2300080: Long Window 17
+    2300082: Long Window 18
+    2300084: Long Window 19
+    2300086: Long Window 2
+    2300088: Long Window 20
+    2300090: Long Window 21
+    2300092: Long Window 22
+    2300094: Long Window 23
+    2300096: Long Window 24
+    2300098: Long Window 3
+    2300100: Long Window 4
+    2300102: Long Window 5
+    2300104: Long Window 6
+    2300106: Long Window 7
+    2300108: Long Window 8
+    2300110: Long Window 9
+    2300112: Long Window#1
+    2300114: Long Window#1 1
+    2300116: Long Window#1 10
+    2300118: Long Window#1 11
+    2300120: Long Window#1 12
+    2300122: Long Window#1 13
+    2300124: Long Window#1 14
+    2300126: Long Window#1 15
+    2300128: Long Window#1 16
+    2300130: Long Window#1 17
+    2300132: Long Window#1 18
+    2300134: Long Window#1 19
+    2300136: Long Window#1 2
+    2300138: Long Window#1 20
+    2300140: Long Window#1 21
+    2300142: Long Window#1 22
+    2300144: Long Window#1 23
+    2300146: Long Window#1 24
+    2300148: Long Window#1 25
+    2300150: Long Window#1 26
+    2300152: Long Window#1 27
+    2300154: Long Window#1 28
+    2300156: Long Window#1 29
+    2300158: Long Window#1 3
+    2300160: Long Window#1 30
+    2300162: Long Window#1 31
+    2300164: Long Window#1 32
+    2300166: Long Window#1 33
+    2300168: Long Window#1 34
+    2300170: Long Window#1 35
+    2300172: Long Window#1 36
+    2300174: Long Window#1 37
+    2300176: Long Window#1 38
+    2300178: Long Window#1 39
+    2300180: Long Window#1 4
+    2300182: Long Window#1 40
+    2300184: Long Window#1 41
+    2300186: Long Window#1 42
+    2300188: Long Window#1 43
+    2300190: Long Window#1 44
+    2300192: Long Window#1 45
+    2300194: Long Window#1 46
+    2300196: Long Window#1 47
+    2300198: Long Window#1 48
+    2300200: Long Window#1 49
+    2300202: Long Window#1 5
+    2300204: Long Window#1 6
+    2300206: Long Window#1 7
+    2300208: Long Window#1 8
+    2300210: Long Window#1 9
+    2300212: Long Window#2
+    2300214: Nacelle
+    2300216: Nacelle 1
+    2300218: Nacelle#1
+    2300220: Nacelle#1 1
+    2300222: Nozzlet
+    2300224: Nozzlet 1
+    2300226: Nozzlet 2
+    2300228: Nozzlet 3
+    2300230: Nozzlet 4
+    2300232: Nozzlet 5
+    2300234: Saucer 1
+    2300236: Saucer 1#1
+    2300238: Slit Window
+    2300240: Slit Window 1
+    2300242: Slit Window 10
+    2300244: Slit Window 11
+    2300246: Slit Window 2
+    2300248: Slit Window 3
+    2300250: Slit Window 4
+    2300252: Slit Window 5
+    2300254: Slit Window 6
+    2300256: Slit Window 7
+    2300258: Slit Window 8
+    2300260: Slit Window 9
+    2300262: UNITED FEDERATIO
+    2300264: UNITED FEDERATIO 1
+    3300000: Bryce
+    3300002: Group 1
+    3300004: Group 10
+    3300006: Group 114
+    3300008: Group 116
+    3300010: Group 124
+    3300012: Group 128
+    3300014: Group 132
+    3300016: Group 141
+    3300018: Group 15
+    3300020: Group 209
+    3300022: Group 238
+    3300024: Group 240
+    3300026: Group 248
+    3300028: Group 252
+    3300030: Group 256
+    3300032: Group 4
+    3300034: Group 6
+    3300036: Group 8
+    3300038: Group 83
+    3300040: Group 85
+    3300042: Group#20
+    3300044: Group#20 1
+    3300046: Group#21
+    3300048: Group#21 1
+    3300050: Hatch
+    3300052: Hatch 1
+    3300054: Hatch 2
+    3300056: Hatch 3
+    3300058: Impulse Engine
+    3300060: Impulse Engine 1
+    3300062: Long Window
+    3300064: Long Window 1
+    3300066: Long Window 10
+    3300068: Long Window 11
+    3300070: Long Window 12
+    3300072: Long Window 13
+    3300074: Long Window 14
+    3300076: Long Window 15
+    3300078: Long Window 16
+    3300080: Long Window 17
+    3300082: Long Window 18
+    3300084: Long Window 19
+    3300086: Long Window 2
+    3300088: Long Window 20
+    3300090: Long Window 21
+    3300092: Long Window 22
+    3300094: Long Window 23
+    3300096: Long Window 24
+    3300098: Long Window 3
+    3300100: Long Window 4
+    3300102: Long Window 5
+    3300104: Long Window 6
+    3300106: Long Window 7
+    3300108: Long Window 8
+    3300110: Long Window 9
+    3300112: Long Window#1
+    3300114: Long Window#1 1
+    3300116: Long Window#1 10
+    3300118: Long Window#1 11
+    3300120: Long Window#1 12
+    3300122: Long Window#1 13
+    3300124: Long Window#1 14
+    3300126: Long Window#1 15
+    3300128: Long Window#1 16
+    3300130: Long Window#1 17
+    3300132: Long Window#1 18
+    3300134: Long Window#1 19
+    3300136: Long Window#1 2
+    3300138: Long Window#1 20
+    3300140: Long Window#1 21
+    3300142: Long Window#1 22
+    3300144: Long Window#1 23
+    3300146: Long Window#1 24
+    3300148: Long Window#1 25
+    3300150: Long Window#1 26
+    3300152: Long Window#1 27
+    3300154: Long Window#1 28
+    3300156: Long Window#1 29
+    3300158: Long Window#1 3
+    3300160: Long Window#1 30
+    3300162: Long Window#1 31
+    3300164: Long Window#1 32
+    3300166: Long Window#1 33
+    3300168: Long Window#1 34
+    3300170: Long Window#1 35
+    3300172: Long Window#1 36
+    3300174: Long Window#1 37
+    3300176: Long Window#1 38
+    3300178: Long Window#1 39
+    3300180: Long Window#1 4
+    3300182: Long Window#1 40
+    3300184: Long Window#1 41
+    3300186: Long Window#1 42
+    3300188: Long Window#1 43
+    3300190: Long Window#1 44
+    3300192: Long Window#1 45
+    3300194: Long Window#1 46
+    3300196: Long Window#1 47
+    3300198: Long Window#1 48
+    3300200: Long Window#1 49
+    3300202: Long Window#1 5
+    3300204: Long Window#1 6
+    3300206: Long Window#1 7
+    3300208: Long Window#1 8
+    3300210: Long Window#1 9
+    3300212: Long Window#2
+    3300214: Nacelle
+    3300216: Nacelle 1
+    3300218: Nacelle#1
+    3300220: Nacelle#1 1
+    3300222: Nozzlet
+    3300224: Nozzlet 1
+    3300226: Nozzlet 2
+    3300228: Nozzlet 3
+    3300230: Nozzlet 4
+    3300232: Nozzlet 5
+    3300234: Saucer 1
+    3300236: Saucer 1#1
+    3300238: Slit Window
+    3300240: Slit Window 1
+    3300242: Slit Window 10
+    3300244: Slit Window 11
+    3300246: Slit Window 2
+    3300248: Slit Window 3
+    3300250: Slit Window 4
+    3300252: Slit Window 5
+    3300254: Slit Window 6
+    3300256: Slit Window 7
+    3300258: Slit Window 8
+    3300260: Slit Window 9
+    3300262: UNITED FEDERATIO
+    3300264: UNITED FEDERATIO 1
+    4300000: Mesh Group 1
+    4300002: Mesh Group 4
+    4300004: Mesh Group 6
+    4300006: Mesh Group 8
+    4300008: Mesh Group 10
+    4300010: Mesh Saucer 1
+    4300012: Mesh Group 15
+    4300014: Mesh Long Window
+    4300016: Mesh Long Window#1
+    4300018: Mesh Long Window#2
+    4300020: Mesh Group 83
+    4300022: Mesh Group 85
+    4300024: Mesh Bryce
+    4300026: Mesh Slit Window
+    4300028: Mesh Group 114
+    4300030: Mesh Group 116
+    4300032: Mesh Nozzlet
+    4300034: Mesh Group 124
+    4300036: Mesh Nacelle
+    4300038: Mesh Group 128
+    4300040: Mesh Nacelle#1
+    4300042: Mesh Group 132
+    4300044: Mesh Hatch
+    4300046: Mesh Impulse Engine
+    4300048: Mesh Saucer 1#1
+    4300050: Mesh Group 141
+    4300052: Mesh Group 209
+    4300054: Mesh UNITED FEDERATIO
+    4300056: Mesh Group#20
+    4300058: Mesh Group#21
+    4300060: Mesh Group#21
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
