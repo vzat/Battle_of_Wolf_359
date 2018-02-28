@@ -1,1 +1,4 @@
-# Battle_of_Wolf_359
+# Battle of Wolf 359
+
+## Story Board
+![Story_Board](story_board.jpg)
