@@ -17,4 +17,7 @@ public class FollowPath : SteeringBehaviour {
 
         return boid.SeekForce(currentWaypoint);
     }
+
+    void Start () {
+    }
 }

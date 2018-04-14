@@ -29,7 +29,7 @@ public class Boid : MonoBehaviour {
         }
 	}
 
-    Vector3 Calculate() {
+    public Vector3 Calculate() {
         Vector3 force = Vector3.zero;
 
         foreach (SteeringBehaviour behaviour in behaviours) {
@@ -43,27 +43,27 @@ public class Boid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        force = Calculate();
-        Vector3 newAcceleration = force / mass;
+        //force = Calculate();
+        //Vector3 newAcceleration = force / mass;
 
-        float smoothRate = Mathf.Clamp(9.0f * Time.deltaTime, 0.15f, 0.4f) / 2.0f;
-        acceleration = Vector3.Lerp(acceleration, newAcceleration, smoothRate);
+        //float smoothRate = Mathf.Clamp(9.0f * Time.deltaTime, 0.15f, 0.4f) / 2.0f;
+        //acceleration = Vector3.Lerp(acceleration, newAcceleration, smoothRate);
 
-        velocity += acceleration * Time.deltaTime;
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        //velocity += acceleration * Time.deltaTime;
+        //velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
-        Vector3 globalUp = new Vector3(0, 0.2f, 0);
-        Vector3 accelUp = acceleration * 0.03f;
-        Vector3 bankUp = accelUp + globalUp;
-        smoothRate = Time.deltaTime * 5.0f;
-        Vector3 tempUp = transform.up;
-        tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
+        //Vector3 globalUp = new Vector3(0, 0.2f, 0);
+        //Vector3 accelUp = acceleration * 0.03f;
+        //Vector3 bankUp = accelUp + globalUp;
+        //smoothRate = Time.deltaTime * 5.0f;
+        //Vector3 tempUp = transform.up;
+        //tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
 
-        if (velocity.magnitude > float.Epsilon) {
-            transform.LookAt(transform.position + velocity, tempUp);
-            velocity *= 0.99f;
-        }
+        //if (velocity.magnitude > float.Epsilon) {
+        //    transform.LookAt(transform.position + velocity, tempUp);
+        //    velocity *= 0.99f;
+        //}
 
-        transform.position += velocity * Time.deltaTime;
+        //transform.position += velocity * Time.deltaTime;
 	}
 }
