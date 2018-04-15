@@ -18,7 +18,6 @@ public class FleetManager : MonoBehaviour {
     public Vector3 leaderPos = new Vector3(0, 0, -200);
 
     List<Boid> ships = new List<Boid>();
-    
 
 	// Use this for initialization
 	void Start () {
