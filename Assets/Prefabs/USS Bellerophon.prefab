@@ -550,6 +550,8 @@ GameObject:
   - component: {fileID: 114602961612140102}
   - component: {fileID: 114194291324862914}
   - component: {fileID: 114187113022734974}
+  - component: {fileID: 114170348385886472}
+  - component: {fileID: 114582175575303594}
   m_Layer: 0
   m_Name: USS Bellerophon
   m_TagString: Untagged
@@ -2051,7 +2053,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863914602892780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: -2, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4297644236839240}
@@ -2228,14 +2230,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410655094860658}
-  m_LocalRotation: {x: 0.027853733, y: 0.07076473, z: -0.02282223, w: 0.99684286}
-  m_LocalPosition: {x: 0, y: 25, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.1, y: 0, z: -116.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4718435869701258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 3.3690002, y: 8.051001, z: -2.3860002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4853884281046854
 Transform:
   m_ObjectHideFlags: 1
@@ -5474,6 +5476,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659418136233898}
   m_Mesh: {fileID: 4300128, guid: 989dd6b735146cf48951dcec5aaee2aa, type: 3}
+--- !u!114 &114170348385886472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410655094860658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5eec048e637f164ba35bf86361beaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 114194291324862914}
+  leader: {fileID: 0}
 --- !u!114 &114187113022734974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5499,8 +5516,26 @@ MonoBehaviour:
   force: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  maxSpeed: 15
+  maxSpeed: 10
   mass: 1
+--- !u!114 &114582175575303594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410655094860658}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a877ccdbd6d3e07499074cb0ca97d103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 114194291324862914}
+  target: {x: 0, y: 0, z: 0}
+  slowingDistance: 15
+  deceleration: 0.9
+  targetGameObj: {fileID: 0}
 --- !u!114 &114602961612140102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5523,7 +5558,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410655094860658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1943d01134b12b141b92e96b11ed3f10, type: 3}
   m_Name: 
