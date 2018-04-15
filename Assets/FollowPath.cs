@@ -8,6 +8,8 @@ public class FollowPath : SteeringBehaviour {
 
     Vector3 currentWaypoint;
 
+    void Start() { }
+
     public override Vector3 Calculate() {
         currentWaypoint = path.CurrentWaypoint();
 

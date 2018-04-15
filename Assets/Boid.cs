@@ -20,6 +20,22 @@ public class Boid : MonoBehaviour {
         return desired - velocity;
     }
 
+    public Vector3 ArriveForce(Vector3 target, float slowingDistance = 15.0f, float deceleration = 1.0f) {
+        Vector3 toTarget = target - transform.position;
+
+        float distance = toTarget.magnitude;
+        if (distance == 0) {
+            return Vector3.zero;
+        }
+
+        float ramped = maxSpeed * (distance / (slowingDistance * deceleration));
+        float clamped = Mathf.Min(ramped, maxSpeed);
+
+        Vector3 desired = clamped * (toTarget / distance);
+
+        return desired - velocity;
+    }
+
 	// Use this for initialization
 	void Start () {
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
