@@ -176,8 +176,8 @@ class Scene1 : State {
     }
 
     public override void Update() {
-        if (!videoPlayed && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 20.0f) {
-            //fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
+        if (!videoPlayed && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 35.0f) {
+            fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
             videoPlayed = true;
         }
     }

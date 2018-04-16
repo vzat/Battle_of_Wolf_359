@@ -11,8 +11,13 @@ public class Boid : MonoBehaviour {
     public float maxSpeed = 10;
     public float mass = 1;
 
+    public Material phaserMaterial;
+
     float minMaxSpeed = 15.0f;
     float maxMaxSpeed = 25.0f;
+
+    [HideInInspector]
+    public LineRenderer phaser;
 
     public Vector3 SeekForce(Vector3 target) {
         Vector3 toTarget = target - transform.position;
@@ -56,6 +61,13 @@ public class Boid : MonoBehaviour {
         foreach (SteeringBehaviour behaviour in behaviours) {
             this.behaviours.Add(behaviour);
         }
+
+        gameObject.AddComponent<LineRenderer>();
+        phaser = GetComponent<LineRenderer>();
+
+        phaser.material = phaserMaterial;
+        phaser.startWidth = 0.1f;
+        phaser.endWidth = 0.1f;
 	}
 
     public IEnumerator ChangeSpeed() {
@@ -163,6 +175,27 @@ public class AttackState : State {
     Seek seek;
     GameObject enemy;
     StateMachine stateMachine;
+    bool firePhaser;
+    bool fireTorpedoes;
+    IEnumerator fireWeapons;
+
+    IEnumerator FireWeapons() {
+        yield return new WaitForSeconds(2);
+        while (true) {
+            if (Random.Range(-1, 1) >= 0) {
+                firePhaser = true;
+                yield return new WaitForSeconds(Random.Range(3, 5));
+                firePhaser = false;
+                yield return new WaitForSeconds(Random.Range(1, 5));
+            }
+            else {
+                fireTorpedoes = true;
+                yield return new WaitForSeconds(Random.Range(3, 5));
+                fireTorpedoes = false;
+                yield return new WaitForSeconds(Random.Range(1, 5));
+            }
+        }
+    }
 
     public AttackState(GameObject enemy) {
         this.enemy = enemy;
@@ -176,15 +209,38 @@ public class AttackState : State {
         seek.targetGameObj = enemy;
 
         stateMachine = owner.GetComponent<StateMachine>();
+
+        boid.phaser.SetPosition(0, boid.transform.position);
+        boid.phaser.SetPosition(1, new Vector3(0, 0, 0));
+
+        fireWeapons = FireWeapons();
+        boid.StartCoroutine(fireWeapons);
+
+        boid.phaser.startColor = Color.white;
+        boid.phaser.endColor = Color.white;
     }
 
     public override void Update() {
         if (Vector3.Distance(boid.transform.position, enemy.transform.position) < 30.0f) {
             stateMachine.ChangeState(new EscapeState(enemy));
         }
+
+        if (firePhaser) {
+            boid.phaser.SetPosition(0, boid.transform.position);
+            boid.phaser.SetPosition(1, new Vector3(0, 0, 0));
+        }
+        else {
+            boid.phaser.SetPosition(0, boid.transform.position);
+            boid.phaser.SetPosition(1, boid.transform.position);
+        }
     }
 
     public override void Exit() {
+        boid.phaser.startColor = Color.clear;
+        boid.phaser.endColor = Color.clear;
+
+        boid.StopCoroutine(fireWeapons);
+
         seek.enabled = false;
     }
 }

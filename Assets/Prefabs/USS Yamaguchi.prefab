@@ -44796,6 +44796,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
+  phaser: {fileID: 0}
 --- !u!114 &114051291636184006
 MonoBehaviour:
   m_ObjectHideFlags: 1
