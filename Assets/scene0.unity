@@ -339,6 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1898918810}
   - component: {fileID: 1898918809}
+  - component: {fileID: 1898918811}
   m_Layer: 0
   m_Name: FleetManager
   m_TagString: Untagged
@@ -369,6 +370,7 @@ MonoBehaviour:
     type: 2}
   ambassadorPrefab: {fileID: 1261762614097570, guid: 959ae53b77ab62d42894dc3680bac2c0,
     type: 2}
+  leader: {fileID: 0}
   fleetNo: 40
   distLine: 15
   distCol: 15
@@ -386,3 +388,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898918811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1898918808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a24ce710ca8354e8b7441adf33b226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}

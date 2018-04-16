@@ -2833,6 +2833,7 @@ GameObject:
   - component: {fileID: 114156631042268932}
   - component: {fileID: 114496577759815144}
   - component: {fileID: 114432102570949404}
+  - component: {fileID: 114897656413468476}
   m_Layer: 0
   m_Name: USS Yamaguchi
   m_TagString: Untagged
@@ -44801,7 +44802,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261762614097570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 751d2a2fbfe45394d8b9dcf8c8903a0a, type: 3}
   m_Name: 
@@ -44831,7 +44832,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261762614097570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5eec048e637f164ba35bf86361beaa0, type: 3}
   m_Name: 
@@ -44856,3 +44857,15 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetGameObj: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+--- !u!114 &114897656413468476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261762614097570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a24ce710ca8354e8b7441adf33b226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}

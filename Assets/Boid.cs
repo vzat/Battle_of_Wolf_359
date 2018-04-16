@@ -83,3 +83,49 @@ public class Boid : MonoBehaviour {
         transform.position += velocity * Time.deltaTime;
 	}
 }
+
+// Ship States
+public class IdleState : State {
+    Boid boid;
+
+    public override void Enter() {
+        boid = owner.GetComponent<Boid>();
+        boid.force = Vector3.zero;
+    }
+
+    public override void Update() {
+    }
+
+    public override void Exit() {
+    }
+}
+
+public class FollowLeader : State {
+    Boid boid;
+    Boid leader;
+    OffsetPursue offsetPursue;
+    float lastVelocityMagnitude;
+
+    public FollowLeader(Boid leader) {
+        this.leader = leader;
+    }
+
+    public override void Enter() {
+        boid = owner.GetComponent<Boid>();
+        offsetPursue = owner.GetComponent<OffsetPursue>();
+        offsetPursue.leader = leader;
+        offsetPursue.enabled = true;
+        lastVelocityMagnitude = -1;
+    }
+
+    public override void Update() {
+        if (lastVelocityMagnitude > boid.velocity.magnitude && boid.velocity.magnitude < 1) {
+            boid.GetComponent<StateMachine>().ChangeState(new IdleState());
+        }
+        lastVelocityMagnitude = boid.velocity.magnitude;
+    }
+
+    public override void Exit() {
+        offsetPursue.enabled = false;
+    }
+}

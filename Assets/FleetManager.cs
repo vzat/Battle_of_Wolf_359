@@ -12,17 +12,17 @@ public class FleetManager : MonoBehaviour {
     public GameObject oberthPrefab;
     public GameObject ambassadorPrefab;
 
-    GameObject leader;
+    [HideInInspector]
+    public GameObject leader;
+    public List<Boid> ships = new List<Boid>();
+
+    StateMachine stateMachine;
     public int fleetNo = 40;
     public float distLine = 10.0f;
     public float distCol = 10.0f;
     public Vector3 leaderPos = new Vector3(0, 0, -200);
 
-    List<Boid> ships = new List<Boid>();
-
     int currentScene = 0;
-
-    List<bool> playedVideo = new List<bool>();
 
     GameObject camera;
 
@@ -30,12 +30,15 @@ public class FleetManager : MonoBehaviour {
 	void Start () {
 
         FollowCamera mainCamera = Camera.main.GetComponent<FollowCamera>();
+        stateMachine = GetComponent<StateMachine>();
+        stateMachine.ChangeState(new Scene0());
 
         leader = new GameObject();
         leader.AddComponent<Boid>();
         leader.AddComponent<Arrive>();
         leader.transform.parent = this.transform;
         leader.transform.position = leaderPos;
+        leader.GetComponent<Arrive>().target = new Vector3(0, 0, -50);
         Object.DontDestroyOnLoad(this);
 
         int line = 1;
@@ -84,9 +87,9 @@ public class FleetManager : MonoBehaviour {
 
             GameObject ship = Instantiate<GameObject>(prefab);
             ship.transform.parent = this.transform;
-            ship.transform.position = leader.transform.position + new Vector3((shipsPerLine - line) * (distCol + Random.Range(0, 5)), 0, - (line - 1) * (distLine + Random.Range(0, 5)));
+            ship.transform.position = leader.transform.position + new Vector3((shipsPerLine - line) * (distCol + Random.Range(0, 5)), Random.Range(-5, 5), - (line - 1) * (distLine + Random.Range(0, 5)));
 
-            ship.GetComponent<OffsetPursue>().leader = leader.GetComponent<Boid>();
+            ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
 
             // There are line * 2 + 1 ships per line
             if (shipsPerLine > line * 2 - 1) {
@@ -100,33 +103,14 @@ public class FleetManager : MonoBehaviour {
             if (i == 0) {
                 mainCamera.target = ship;
             }
-
-            //Object.DontDestroyOnLoad(ship);
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        switch (currentScene) {
-            case 0:
-                if (Vector3.Distance(leader.transform.position, new Vector3(0, 0, 0)) < 100.0f) {
-                    playedVideo.Add(false);
-                    SceneManager.LoadScene("scene1");
-                    currentScene++;
-                }
-                break;
-            case 1:
-                if (!playedVideo[playedVideo.Count - 1]) {
-                    PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
-                    playedVideo[playedVideo.Count - 1] = true;
-                }
-                break;
-            default:
-                break;
-        }
-	}
+    }
 
-    void PlayVideo (string videoUrl) {
+    public void PlayVideo (string videoUrl) {
         camera = GameObject.Find("Main Camera");
         var videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
         videoPlayer.playOnAwake = false;
@@ -139,5 +123,42 @@ public class FleetManager : MonoBehaviour {
 
     void EndReached(UnityEngine.Video.VideoPlayer vp) {
         Destroy(camera.GetComponent<UnityEngine.Video.VideoPlayer>());
+    }
+}
+
+// Scenes
+class Scene0 : State {
+    FleetManager fleetManager;
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+    }
+
+    public override void Update() {
+        if (Vector3.Distance(fleetManager.leader.transform.position, new Vector3(0, 0, 0)) < 60.0f) {
+            owner.ChangeState(new Scene1());
+        }
+    }
+
+    public override void Exit() {
+    }
+}
+
+class Scene1 : State {
+    FleetManager fleetManager;
+
+    public override void Enter() {
+        SceneManager.LoadScene("scene1");
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        FollowCamera mainCamera = Camera.main.GetComponent<FollowCamera>();
+        mainCamera.target = fleetManager.GetComponent<GameObject>();
+    }
+
+    public override void Update() {
+        //fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
+    }
+
+    public override void Exit() {
     }
 }
