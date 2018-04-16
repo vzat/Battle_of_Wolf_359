@@ -11,13 +11,8 @@ public class Boid : MonoBehaviour {
     public float maxSpeed = 10;
     public float mass = 1;
 
-    public Material phaserMaterial;
-
     float minMaxSpeed = 15.0f;
     float maxMaxSpeed = 25.0f;
-
-    [HideInInspector]
-    public LineRenderer phaser;
 
     public Vector3 SeekForce(Vector3 target) {
         Vector3 toTarget = target - transform.position;
@@ -61,13 +56,6 @@ public class Boid : MonoBehaviour {
         foreach (SteeringBehaviour behaviour in behaviours) {
             this.behaviours.Add(behaviour);
         }
-
-        gameObject.AddComponent<LineRenderer>();
-        phaser = GetComponent<LineRenderer>();
-
-        phaser.material = phaserMaterial;
-        phaser.startWidth = 0.1f;
-        phaser.endWidth = 0.1f;
 	}
 
     public IEnumerator ChangeSpeed() {
@@ -78,8 +66,6 @@ public class Boid : MonoBehaviour {
 
             maxSpeed = maxSpeed < minMaxSpeed ? minMaxSpeed : maxSpeed;
             maxSpeed = maxSpeed > maxMaxSpeed ? maxMaxSpeed : maxSpeed;
-
-            Debug.Log(maxSpeed);
 
             yield return new WaitForSeconds(Random.Range(1, 5));
         }
@@ -121,158 +107,7 @@ public class Boid : MonoBehaviour {
         }
 
         transform.position += velocity * Time.deltaTime;
-	}
-}
-
-// Ship States
-public class IdleState : State {
-    Boid boid;
-
-    public override void Enter() {
-        boid = owner.GetComponent<Boid>();
-        boid.force = Vector3.zero;
-    }
-
-    public override void Update() {
-    }
-
-    public override void Exit() {
     }
 }
 
-public class FollowLeader : State {
-    Boid boid;
-    Boid leader;
-    OffsetPursue offsetPursue;
-    float lastVelocityMagnitude;
 
-    public FollowLeader(Boid leader) {
-        this.leader = leader;
-    }
-
-    public override void Enter() {
-        boid = owner.GetComponent<Boid>();
-        offsetPursue = owner.GetComponent<OffsetPursue>();
-        offsetPursue.leader = leader;
-        offsetPursue.enabled = true;
-        lastVelocityMagnitude = -1;
-    }
-
-    public override void Update() {
-        if (lastVelocityMagnitude > boid.velocity.magnitude && boid.velocity.magnitude < 1) {
-            boid.GetComponent<StateMachine>().ChangeState(new IdleState());
-        }
-        lastVelocityMagnitude = boid.velocity.magnitude;
-    }
-
-    public override void Exit() {
-        offsetPursue.enabled = false;
-    }
-}
-
-public class AttackState : State {
-    Boid boid;
-    Seek seek;
-    GameObject enemy;
-    StateMachine stateMachine;
-    bool firePhaser;
-    bool fireTorpedoes;
-    IEnumerator fireWeapons;
-
-    IEnumerator FireWeapons() {
-        yield return new WaitForSeconds(2);
-        while (true) {
-            if (Random.Range(-1, 1) >= 0) {
-                firePhaser = true;
-                yield return new WaitForSeconds(Random.Range(3, 5));
-                firePhaser = false;
-                yield return new WaitForSeconds(Random.Range(1, 5));
-            }
-            else {
-                fireTorpedoes = true;
-                yield return new WaitForSeconds(Random.Range(3, 5));
-                fireTorpedoes = false;
-                yield return new WaitForSeconds(Random.Range(1, 5));
-            }
-        }
-    }
-
-    public AttackState(GameObject enemy) {
-        this.enemy = enemy;
-    }
-
-    public override void Enter() {
-        boid = owner.GetComponent<Boid>();
-        seek = owner.GetComponent<Seek>();
-
-        seek.enabled = true;
-        seek.targetGameObj = enemy;
-
-        stateMachine = owner.GetComponent<StateMachine>();
-
-        boid.phaser.SetPosition(0, boid.transform.position);
-        boid.phaser.SetPosition(1, new Vector3(0, 0, 0));
-
-        fireWeapons = FireWeapons();
-        boid.StartCoroutine(fireWeapons);
-
-        boid.phaser.startColor = Color.white;
-        boid.phaser.endColor = Color.white;
-    }
-
-    public override void Update() {
-        if (Vector3.Distance(boid.transform.position, enemy.transform.position) < 30.0f) {
-            stateMachine.ChangeState(new EscapeState(enemy));
-        }
-
-        if (firePhaser) {
-            boid.phaser.SetPosition(0, boid.transform.position);
-            boid.phaser.SetPosition(1, new Vector3(0, 0, 0));
-        }
-        else {
-            boid.phaser.SetPosition(0, boid.transform.position);
-            boid.phaser.SetPosition(1, boid.transform.position);
-        }
-    }
-
-    public override void Exit() {
-        boid.phaser.startColor = Color.clear;
-        boid.phaser.endColor = Color.clear;
-
-        boid.StopCoroutine(fireWeapons);
-
-        seek.enabled = false;
-    }
-}
-
-public class EscapeState : State {
-    Boid boid;
-    Escape escape;
-    GameObject enemy;
-    StateMachine stateMachine;
-
-    public EscapeState(GameObject enemy) {
-        this.enemy = enemy;
-    }
-
-    public override void Enter() {
-        boid = owner.GetComponent<Boid>();
-        escape = owner.GetComponent<Escape>();
-
-        escape.randomDir = Random.insideUnitCircle;
-        escape.enabled = true;
-        escape.targetGameObj = enemy;
-
-        stateMachine = owner.GetComponent<StateMachine>();
-    }
-
-    public override void Update() {
-        if (Vector3.Distance(boid.transform.position, enemy.transform.position) > 30.0f) {
-            stateMachine.ChangeState(new AttackState(enemy));
-        }
-    }
-
-    public override void Exit() {
-        escape.enabled = false;
-    }
-}

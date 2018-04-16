@@ -2834,6 +2834,7 @@ GameObject:
   - component: {fileID: 114496577759815144}
   - component: {fileID: 114432102570949404}
   - component: {fileID: 114897656413468476}
+  - component: {fileID: 114759801202543328}
   m_Layer: 0
   m_Name: USS Yamaguchi
   m_TagString: Untagged
@@ -44796,8 +44797,6 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
-  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
-  phaser: {fileID: 0}
 --- !u!114 &114051291636184006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44859,6 +44858,20 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetGameObj: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+--- !u!114 &114759801202543328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261762614097570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e153d61fb559342b1c028f7778e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
+  torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
+    type: 2}
 --- !u!114 &114897656413468476
 MonoBehaviour:
   m_ObjectHideFlags: 1

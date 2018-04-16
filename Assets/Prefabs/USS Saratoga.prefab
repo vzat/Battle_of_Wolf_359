@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114227626494215190}
   - component: {fileID: 114605703987993052}
   - component: {fileID: 114444192221604352}
+  - component: {fileID: 114641504221622462}
   m_Layer: 0
   m_Name: USS Saratoga
   m_TagString: Untagged
@@ -193,6 +194,20 @@ MonoBehaviour:
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 114685984928301630}
   leader: {fileID: 0}
+--- !u!114 &114641504221622462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353018510276968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e153d61fb559342b1c028f7778e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
+  torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
+    type: 2}
 --- !u!114 &114685984928301630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,5 +224,3 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
-  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
-  phaser: {fileID: 0}

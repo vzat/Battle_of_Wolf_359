@@ -371,6 +371,8 @@ MonoBehaviour:
   ambassadorPrefab: {fileID: 1261762614097570, guid: 959ae53b77ab62d42894dc3680bac2c0,
     type: 2}
   leader: {fileID: 0}
+  ships: []
+  borg: {fileID: 0}
   fleetNo: 40
   distLine: 15
   distCol: 15

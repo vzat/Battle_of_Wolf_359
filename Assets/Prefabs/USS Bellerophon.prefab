@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 114187113022734974}
   - component: {fileID: 114170348385886472}
   - component: {fileID: 114582175575303594}
+  - component: {fileID: 114533653978202222}
   m_Layer: 0
   m_Name: USS Bellerophon
   m_TagString: Untagged
@@ -5519,6 +5520,20 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+--- !u!114 &114533653978202222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410655094860658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e153d61fb559342b1c028f7778e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
+  torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
+    type: 2}
 --- !u!114 &114582175575303594
 MonoBehaviour:
   m_ObjectHideFlags: 1
