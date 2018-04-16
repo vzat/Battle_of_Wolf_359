@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Jobs;
+using UnityEngine.Jobs;
+using Unity.Collections;
 
 public class FleetManager : MonoBehaviour {
 
@@ -23,8 +26,26 @@ public class FleetManager : MonoBehaviour {
     public float distCol = 10.0f;
     public Vector3 leaderPos = new Vector3(0, 0, -200);
 
-	// Use this for initialization
-	void Start () {
+    // Job System
+    Transform[] transforms;
+    JobHandle positionJobHandle;
+    TransformAccessArray transformAccessArray;
+    NativeArray<Vector3> velocities;
+
+    struct PositionUpdateJob : IJobParallelForTransform {
+        [ReadOnly]
+        public NativeArray<Vector3> velocity;
+
+        // Delta time needs to be passed to the job as it cannot access it
+        public float deltaTime;
+
+        public void Execute(int i, TransformAccess transform) {
+            transform.position += velocity[i] * deltaTime;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 
         // Set the initial scene
         FollowCamera mainCamera = Camera.main.GetComponent<FollowCamera>();
@@ -42,6 +63,10 @@ public class FleetManager : MonoBehaviour {
 
         // Get Borg Cube
         borg = GameObject.Find("Borg");
+
+        // Job System
+        velocities = new NativeArray<Vector3>(fleetNo, Allocator.Persistent);
+        transforms = new Transform[fleetNo];
 
         int line = 1;
         int shipsPerLine = 0;
@@ -101,17 +126,66 @@ public class FleetManager : MonoBehaviour {
                 shipsPerLine = 0;
             }
 
-            ships.Add(ship.GetComponent<Boid>());
+            Boid shipBoid = ship.GetComponent<Boid>();
+            shipBoid.jobSystemUpdate = true;
+            ships.Add(shipBoid);
             shipsPerLine++;
 
             if (i == 0) {
                 mainCamera.target = ship;
             }
+
+            // Get ship transform
+            transforms[i] = ship.transform;
         }
-	}
+
+        transformAccessArray = new TransformAccessArray(transforms);
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        for (int i = 0; i < ships.Count; i++) {
+            Boid ship = ships[i];
+
+            ship.force = ship.Calculate();
+            Vector3 newAcceleration = ship.force / ship.mass;
+
+            float smoothRate = Mathf.Clamp(9.0f * Time.deltaTime, 0.15f, 0.4f) / 2.0f;
+            ship.acceleration = Vector3.Lerp(ship.acceleration, newAcceleration, smoothRate);
+
+            ship.velocity += ship.acceleration * Time.deltaTime;
+            ship.velocity = Vector3.ClampMagnitude(ship.velocity, ship.maxSpeed);
+
+            Vector3 globalUp = new Vector3(0, 0.2f, 0);
+            Vector3 accelUp = ship.acceleration * 0.03f;
+            Vector3 bankUp = accelUp + globalUp;
+            smoothRate = Time.deltaTime * 5.0f;
+            Vector3 tempUp = ship.transform.up;
+            tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
+
+            if (ship.velocity.magnitude > float.Epsilon) {
+                ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
+                ship.velocity *= 0.99f;
+            }
+
+            velocities[i] = ship.velocity;
+        }
+
+        PositionUpdateJob positionJob = new PositionUpdateJob() {
+            velocity = velocities,
+            deltaTime = Time.deltaTime
+        };
+
+        positionJobHandle = positionJob.Schedule(transformAccessArray);
+    }
+
+    void LateUpdate() {
+        positionJobHandle.Complete();
+    }
+
+    void OnDestroy() {
+        velocities.Dispose();
+        transformAccessArray.Dispose();
     }
 }
 
@@ -202,7 +276,7 @@ class Scene2 : State {
     }
 
     public override void Update() {
-
+        
     }
 
     public override void Exit() {
