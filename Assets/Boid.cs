@@ -11,6 +11,9 @@ public class Boid : MonoBehaviour {
     public float maxSpeed = 10;
     public float mass = 1;
 
+    float minMaxSpeed = 15.0f;
+    float maxMaxSpeed = 25.0f;
+
     public Vector3 SeekForce(Vector3 target) {
         Vector3 toTarget = target - transform.position;
         toTarget.Normalize();
@@ -36,6 +39,16 @@ public class Boid : MonoBehaviour {
         return desired - velocity;
     }
 
+    public Vector3 EscapeForce(Vector3 target, Vector3 randomDir) {
+        Vector3 toTarget = target - transform.position;
+
+        toTarget.Normalize();
+
+        Vector3 desired = Vector3.Cross(toTarget, randomDir) * maxSpeed;
+
+        return desired;
+    }
+
 	// Use this for initialization
 	void Start () {
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
@@ -44,6 +57,19 @@ public class Boid : MonoBehaviour {
             this.behaviours.Add(behaviour);
         }
 	}
+
+    public IEnumerator ChangeSpeed() {
+        while (true) {
+            float speedDif = Random.Range(-5, 5);
+
+            maxSpeed += speedDif;
+
+            maxSpeed = maxSpeed < minMaxSpeed ? minMaxSpeed : maxSpeed;
+            maxSpeed = maxSpeed > maxMaxSpeed ? maxMaxSpeed : maxSpeed;
+
+            yield return new WaitForSeconds(Random.Range(1, 5));
+        }
+    }
 
     Vector3 Calculate() {
         Vector3 force = Vector3.zero;
@@ -81,5 +107,7 @@ public class Boid : MonoBehaviour {
         }
 
         transform.position += velocity * Time.deltaTime;
-	}
+    }
 }
+
+

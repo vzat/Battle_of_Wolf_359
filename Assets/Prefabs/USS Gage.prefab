@@ -41,6 +41,8 @@ GameObject:
   - component: {fileID: 114619206588115090}
   - component: {fileID: 114070252326517912}
   - component: {fileID: 114369852787993860}
+  - component: {fileID: 114355083683368008}
+  - component: {fileID: 114951840353890238}
   m_Layer: 0
   m_Name: USS Gage
   m_TagString: Untagged
@@ -182,13 +184,25 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
---- !u!114 &114369852787993860
+--- !u!114 &114355083683368008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939422504654854}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a24ce710ca8354e8b7441adf33b226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+--- !u!114 &114369852787993860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939422504654854}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5eec048e637f164ba35bf86361beaa0, type: 3}
   m_Name: 
@@ -231,3 +245,17 @@ MonoBehaviour:
   slowingDistance: 15
   deceleration: 0.9
   targetGameObj: {fileID: 0}
+--- !u!114 &114951840353890238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939422504654854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e153d61fb559342b1c028f7778e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
+  torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
+    type: 2}
