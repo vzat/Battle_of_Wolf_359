@@ -23,10 +23,6 @@ public class FleetManager : MonoBehaviour {
     public float distCol = 10.0f;
     public Vector3 leaderPos = new Vector3(0, 0, -200);
 
-    int currentScene = 0;
-
-    GameObject camera;
-
 	// Use this for initialization
 	void Start () {
 
@@ -117,21 +113,6 @@ public class FleetManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     }
-
-    public void PlayVideo (string videoUrl) {
-        camera = GameObject.Find("Main Camera");
-        var videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
-        videoPlayer.playOnAwake = false;
-        videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.CameraNearPlane;
-        videoPlayer.url = videoUrl;
-        videoPlayer.EnableAudioTrack(0, true);
-        videoPlayer.loopPointReached += EndReached;
-        videoPlayer.Play();
-    }
-
-    void EndReached(UnityEngine.Video.VideoPlayer vp) {
-        Destroy(camera.GetComponent<UnityEngine.Video.VideoPlayer>());
-    }
 }
 
 // Scenes
@@ -154,11 +135,16 @@ class Scene0 : State {
 
 class Scene1 : State {
     FleetManager fleetManager;
+    VideoManager videoManager;
+
     public bool videoPlayed;
 
     public override void Enter() {
         SceneManager.LoadScene("scene1");
         fleetManager = owner.GetComponent<FleetManager>();
+
+        // Get VideoManager
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
 
         // Set the first 3 ships to attack
         for (int i = 0; i < fleetManager.ships.Count && i < 3; i++) {
@@ -176,12 +162,50 @@ class Scene1 : State {
     }
 
     public override void Update() {
-        if (!videoPlayed && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 35.0f) {
-            fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
+        if (videoPlayed && !videoManager.playingVideo) {
+            owner.ChangeState(new Scene2());
+        }
+
+        if (!videoManager.playingVideo && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 35.0f) {
+            videoManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
             videoPlayed = true;
         }
     }
 
     public override void Exit() {
+    }
+}
+
+class Scene2 : State {
+    FleetManager fleetManager;
+
+    IEnumerator LoadScene() {
+        AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene2", LoadSceneMode.Single);
+
+        while (!asyncSceneChange.isDone) {
+            yield return null;
+        }
+
+        GameObject camera = GameObject.Find("Main Camera");
+        //camera.transform.position = fleetManager.ships[0].transform.position + new Vector3(0, 10.0f, 10.0f);
+        camera.transform.parent = fleetManager.ships[0].transform;
+        camera.transform.localPosition = new Vector3(0, 10.0f, -15.0f);
+
+        FollowCamera followCamera = camera.GetComponent<FollowCamera>();
+        followCamera.target = fleetManager.ships[0].gameObject;
+    }
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        fleetManager.StartCoroutine(LoadScene());
+    }
+
+    public override void Update() {
+
+    }
+
+    public override void Exit() {
+
     }
 }

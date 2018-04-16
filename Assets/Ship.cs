@@ -12,14 +12,10 @@ public class Ship : MonoBehaviour {
 
     Vector3 firePos = Vector3.zero;
 
-    Boid boid;
-
     LineRenderer phaser;
 
     // Use this for initialization
     void Start () {
-        boid = this.GetComponent<Boid>();
-
         gameObject.AddComponent<LineRenderer>();
         phaser = GetComponent<LineRenderer>();
 
