@@ -11,6 +11,9 @@ public class Boid : MonoBehaviour {
     public float maxSpeed = 10;
     public float mass = 1;
 
+    float minMaxSpeed = 15.0f;
+    float maxMaxSpeed = 25.0f;
+
     public Vector3 SeekForce(Vector3 target) {
         Vector3 toTarget = target - transform.position;
         toTarget.Normalize();
@@ -36,6 +39,16 @@ public class Boid : MonoBehaviour {
         return desired - velocity;
     }
 
+    public Vector3 EscapeForce(Vector3 target, Vector3 randomDir) {
+        Vector3 toTarget = target - transform.position;
+
+        toTarget.Normalize();
+
+        Vector3 desired = Vector3.Cross(toTarget, randomDir) * maxSpeed;
+
+        return desired;
+    }
+
 	// Use this for initialization
 	void Start () {
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
@@ -44,6 +57,21 @@ public class Boid : MonoBehaviour {
             this.behaviours.Add(behaviour);
         }
 	}
+
+    public IEnumerator ChangeSpeed() {
+        while (true) {
+            float speedDif = Random.Range(-5, 5);
+
+            maxSpeed += speedDif;
+
+            maxSpeed = maxSpeed < minMaxSpeed ? minMaxSpeed : maxSpeed;
+            maxSpeed = maxSpeed > maxMaxSpeed ? maxMaxSpeed : maxSpeed;
+
+            Debug.Log(maxSpeed);
+
+            yield return new WaitForSeconds(Random.Range(1, 5));
+        }
+    }
 
     Vector3 Calculate() {
         Vector3 force = Vector3.zero;
@@ -127,5 +155,68 @@ public class FollowLeader : State {
 
     public override void Exit() {
         offsetPursue.enabled = false;
+    }
+}
+
+public class AttackState : State {
+    Boid boid;
+    Seek seek;
+    GameObject enemy;
+    StateMachine stateMachine;
+
+    public AttackState(GameObject enemy) {
+        this.enemy = enemy;
+    }
+
+    public override void Enter() {
+        boid = owner.GetComponent<Boid>();
+        seek = owner.GetComponent<Seek>();
+
+        seek.enabled = true;
+        seek.targetGameObj = enemy;
+
+        stateMachine = owner.GetComponent<StateMachine>();
+    }
+
+    public override void Update() {
+        if (Vector3.Distance(boid.transform.position, enemy.transform.position) < 30.0f) {
+            stateMachine.ChangeState(new EscapeState(enemy));
+        }
+    }
+
+    public override void Exit() {
+        seek.enabled = false;
+    }
+}
+
+public class EscapeState : State {
+    Boid boid;
+    Escape escape;
+    GameObject enemy;
+    StateMachine stateMachine;
+
+    public EscapeState(GameObject enemy) {
+        this.enemy = enemy;
+    }
+
+    public override void Enter() {
+        boid = owner.GetComponent<Boid>();
+        escape = owner.GetComponent<Escape>();
+
+        escape.randomDir = Random.insideUnitCircle;
+        escape.enabled = true;
+        escape.targetGameObj = enemy;
+
+        stateMachine = owner.GetComponent<StateMachine>();
+    }
+
+    public override void Update() {
+        if (Vector3.Distance(boid.transform.position, enemy.transform.position) > 30.0f) {
+            stateMachine.ChangeState(new AttackState(enemy));
+        }
+    }
+
+    public override void Exit() {
+        escape.enabled = false;
     }
 }

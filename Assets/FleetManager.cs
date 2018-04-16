@@ -15,6 +15,7 @@ public class FleetManager : MonoBehaviour {
     [HideInInspector]
     public GameObject leader;
     public List<Boid> ships = new List<Boid>();
+    public GameObject borg;
 
     StateMachine stateMachine;
     public int fleetNo = 40;
@@ -29,10 +30,12 @@ public class FleetManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        // Set the initial scene
         FollowCamera mainCamera = Camera.main.GetComponent<FollowCamera>();
         stateMachine = GetComponent<StateMachine>();
         stateMachine.ChangeState(new Scene0());
 
+        // Create leader and set position
         leader = new GameObject();
         leader.AddComponent<Boid>();
         leader.AddComponent<Arrive>();
@@ -40,6 +43,9 @@ public class FleetManager : MonoBehaviour {
         leader.transform.position = leaderPos;
         leader.GetComponent<Arrive>().target = new Vector3(0, 0, -50);
         Object.DontDestroyOnLoad(this);
+
+        // Get Borg Cube
+        borg = GameObject.Find("Borg");
 
         int line = 1;
         int shipsPerLine = 0;
@@ -90,6 +96,8 @@ public class FleetManager : MonoBehaviour {
             ship.transform.position = leader.transform.position + new Vector3((shipsPerLine - line) * (distCol + Random.Range(0, 5)), Random.Range(-5, 5), - (line - 1) * (distLine + Random.Range(0, 5)));
 
             ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
+            ship.AddComponent<Escape>();
+            ship.GetComponent<Escape>().enabled = false;
 
             // There are line * 2 + 1 ships per line
             if (shipsPerLine > line * 2 - 1) {
@@ -146,17 +154,32 @@ class Scene0 : State {
 
 class Scene1 : State {
     FleetManager fleetManager;
+    public bool videoPlayed;
 
     public override void Enter() {
         SceneManager.LoadScene("scene1");
         fleetManager = owner.GetComponent<FleetManager>();
 
+        // Set the first 3 ships to attack
+        for (int i = 0; i < fleetManager.ships.Count && i < 3; i++) {
+            Boid ship = fleetManager.ships[i];
+            ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
+            ship.maxSpeed = 20.0f;
+            ship.StartCoroutine(ship.ChangeSpeed());
+        }
+
+        // Change Camera Target
         FollowCamera mainCamera = Camera.main.GetComponent<FollowCamera>();
         mainCamera.target = fleetManager.GetComponent<GameObject>();
+
+        videoPlayed = false;
     }
 
     public override void Update() {
-        //fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
+        if (!videoPlayed && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 20.0f) {
+            //fleetManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
+            videoPlayed = true;
+        }
     }
 
     public override void Exit() {
