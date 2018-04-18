@@ -14,7 +14,8 @@ public class FollowCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (target != null) {
-            transform.LookAt(target.transform);
+            //transform.LookAt(Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime));
+            transform.LookAt(target.transform.position);
         }
 	}
 }

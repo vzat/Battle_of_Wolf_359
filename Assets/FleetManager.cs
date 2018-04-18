@@ -144,6 +144,14 @@ public class FleetManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Put the job before so it can process in parallel with the velocity calculation
+        PositionUpdateJob positionJob = new PositionUpdateJob() {
+            velocity = velocities,
+            deltaTime = Time.deltaTime
+        };
+
+        positionJobHandle = positionJob.Schedule(transformAccessArray);
+
         for (int i = 0; i < ships.Count; i++) {
             Boid ship = ships[i];
 
@@ -170,13 +178,6 @@ public class FleetManager : MonoBehaviour {
 
             velocities[i] = ship.velocity;
         }
-
-        PositionUpdateJob positionJob = new PositionUpdateJob() {
-            velocity = velocities,
-            deltaTime = Time.deltaTime
-        };
-
-        positionJobHandle = positionJob.Schedule(transformAccessArray);
     }
 
     void LateUpdate() {
@@ -265,8 +266,11 @@ class Scene2 : State {
         camera.transform.parent = fleetManager.ships[0].transform;
         camera.transform.localPosition = new Vector3(0, 10.0f, -15.0f);
 
-        FollowCamera followCamera = camera.GetComponent<FollowCamera>();
-        followCamera.target = fleetManager.ships[0].gameObject;
+        //FollowCamera followCamera = camera.GetComponent<FollowCamera>();
+        //followCamera.target = fleetManager.ships[0].gameObject;
+        FollowShip followShip = camera.GetComponent<FollowShip>();
+        followShip.enemy = fleetManager.borg;
+        followShip.ship = fleetManager.ships[0].gameObject;
     }
 
     public override void Enter() {
