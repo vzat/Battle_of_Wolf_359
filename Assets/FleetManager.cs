@@ -262,12 +262,6 @@ class Scene2 : State {
         }
 
         GameObject camera = GameObject.Find("Main Camera");
-        //camera.transform.position = fleetManager.ships[0].transform.position + new Vector3(0, 10.0f, 10.0f);
-        camera.transform.parent = fleetManager.ships[0].transform;
-        camera.transform.localPosition = new Vector3(0, 10.0f, -15.0f);
-
-        //FollowCamera followCamera = camera.GetComponent<FollowCamera>();
-        //followCamera.target = fleetManager.ships[0].gameObject;
         FollowShip followShip = camera.GetComponent<FollowShip>();
         followShip.enemy = fleetManager.borg;
         followShip.ship = fleetManager.ships[0].gameObject;

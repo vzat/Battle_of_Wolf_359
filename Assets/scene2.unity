@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   ship: {fileID: 0}
-  distance: 10
+  distance: 25
 --- !u!1 &1009833455
 GameObject:
   m_ObjectHideFlags: 0

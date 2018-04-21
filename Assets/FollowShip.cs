@@ -5,24 +5,23 @@ using UnityEngine;
 public class FollowShip : MonoBehaviour {
     public GameObject enemy;
     public GameObject ship;
-    public float distance = 10.0f;
+    public float distance = 25.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start() {
+
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (enemy != null && ship != null) {
-            //Vector3 toEnemy = enemy.transform.position - ship.transform.position;
-            //float x = Vector3.Angle(toEnemy, ship.transform.forward);
-            //float y = Vector3.Angle(toEnemy, ship.transform.up);
-            //float z = Vector3.Angle(toEnemy, ship.transform.right);
+            Vector3 toEnemy = enemy.transform.position - ship.transform.position;
+            toEnemy.Normalize();
+            Vector3 toCamera = toEnemy * -1 * distance;
 
-            //transform.localPosition = new Vector3(Mathf.Sin(x) * distance, 10.0f, Mathf.Cos(x) * distance);
+            this.transform.position = ship.transform.position + toCamera;
+
             transform.LookAt(ship.transform);
-
         }
-	}
+    }
 }
