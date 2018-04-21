@@ -6,6 +6,7 @@ public class Ship : MonoBehaviour {
 
     public Material phaserMaterial;
     public GameObject torpedoPrefab;
+    public bool captured = false;
 
     bool firePhaser = false;
     bool fireTorpedoes = false;

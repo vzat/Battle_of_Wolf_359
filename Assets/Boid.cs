@@ -41,6 +41,15 @@ public class Boid : MonoBehaviour {
         return desired - velocity;
     }
 
+    public Vector3 FleeForce(Vector3 target) {
+        Vector3 fromTarget = transform.position - target;
+        fromTarget.Normalize();
+
+        Vector3 desired = fromTarget * maxSpeed;
+
+        return desired - velocity;
+    }
+
     public Vector3 EscapeForce(Vector3 target, Vector3 randomDir) {
         Vector3 toTarget = target - transform.position;
 

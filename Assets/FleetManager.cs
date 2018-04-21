@@ -265,6 +265,7 @@ class Scene2 : State {
         FollowShip followShip = camera.GetComponent<FollowShip>();
         followShip.enemy = fleetManager.borg;
         followShip.ship = fleetManager.ships[0].gameObject;
+        followShip.shipComponent = followShip.ship.GetComponent<Ship>();
     }
 
     public override void Enter() {

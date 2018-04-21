@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e6c3c698328084bb227152e2653e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tractorBeamMaterial: {fileID: 2100000, guid: e93e4068aadfd2e4eb4fe7ba00ace703, type: 2}
 --- !u!1 &1694876631
 GameObject:
   m_ObjectHideFlags: 0
