@@ -11,8 +11,9 @@ public class Boid : MonoBehaviour {
     public float maxSpeed = 10;
     public float mass = 1;
 
-    float minMaxSpeed = 15.0f;
-    float maxMaxSpeed = 25.0f;
+    [HideInInspector]
+    public float minMaxSpeed = 15.0f;
+    public float maxMaxSpeed = 25.0f;
 
     public bool jobSystemUpdate = false;
 
@@ -97,24 +98,36 @@ public class Boid : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (!jobSystemUpdate) {
-            force = Calculate();
-            Vector3 newAcceleration = force / mass;
+            //force = Calculate();
+            //Vector3 newAcceleration = force / mass;
 
-            float smoothRate = Mathf.Clamp(9.0f * Time.deltaTime, 0.15f, 0.4f) / 2.0f;
-            acceleration = Vector3.Lerp(acceleration, newAcceleration, smoothRate);
+            //float smoothRate = Mathf.Clamp(9.0f * Time.deltaTime, 0.15f, 0.4f) / 2.0f;
+            //acceleration = Vector3.Lerp(acceleration, newAcceleration, smoothRate);
+
+            //velocity += acceleration * Time.deltaTime;
+            //velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+            //Vector3 globalUp = new Vector3(0, 0.2f, 0);
+            //Vector3 accelUp = acceleration * 0.03f;
+            //Vector3 bankUp = accelUp + globalUp;
+            //smoothRate = Time.deltaTime * 5.0f;
+            //Vector3 tempUp = transform.up;
+            //tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
+
+            //if (velocity.magnitude > float.Epsilon) {
+            //    transform.LookAt(transform.position + velocity, tempUp);
+            //    velocity *= 0.99f;
+            //}
+
+            //transform.position += velocity * Time.deltaTime;
+
+            force = Calculate();
+            Vector3 acceleration = force / mass;
 
             velocity += acceleration * Time.deltaTime;
             velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
-            Vector3 globalUp = new Vector3(0, 0.2f, 0);
-            Vector3 accelUp = acceleration * 0.03f;
-            Vector3 bankUp = accelUp + globalUp;
-            smoothRate = Time.deltaTime * 5.0f;
-            Vector3 tempUp = transform.up;
-            tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
-
             if (velocity.magnitude > float.Epsilon) {
-                transform.LookAt(transform.position + velocity, tempUp);
                 velocity *= 0.99f;
             }
 

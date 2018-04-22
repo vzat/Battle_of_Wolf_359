@@ -10472,6 +10472,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  minMaxSpeed: 15
+  maxMaxSpeed: 25
   jobSystemUpdate: 0
 --- !u!114 &114346726402450972
 MonoBehaviour:
@@ -10535,3 +10537,7 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
   captured: 0
+  structuralIntegrity: 100
+  explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
+    type: 2}
+  fleetManager: {fileID: 0}

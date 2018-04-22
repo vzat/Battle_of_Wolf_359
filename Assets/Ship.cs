@@ -8,6 +8,8 @@ public class Ship : MonoBehaviour {
     public GameObject torpedoPrefab;
     public bool captured = false;
     public float structuralIntegrity = 100.0f;
+    public ParticleSystem explosionPrefab;
+    public FleetManager fleetManager;
 
     bool firePhaser = false;
     bool fireTorpedoes = false;
@@ -15,6 +17,10 @@ public class Ship : MonoBehaviour {
     Vector3 firePos = Vector3.zero;
 
     LineRenderer phaser;
+
+    bool destroyed = false;
+
+    IEnumerator fireWeapons;
 
     // Use this for initialization
     void Start () {
@@ -25,14 +31,28 @@ public class Ship : MonoBehaviour {
         phaser.startWidth = 0.1f;
         phaser.endWidth = 0.1f;
 
-        StartCoroutine(FireWeapons());
+        fireWeapons = FireWeapons();
+        StartCoroutine(fireWeapons);
     }
 	
 	// Update is called once per frame
 	void Update () {
         // Ship Destroyed
-        if (structuralIntegrity < 0.0f) {
-            
+        if (structuralIntegrity < 0.0f && !destroyed) {
+            destroyed = true;
+
+            // Stop firing weapons
+            StopCoroutine(fireWeapons);
+            firePhaser = false;
+            fireTorpedoes = false;
+
+            ParticleSystem explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = this.transform.position;
+            explosion.Play();
+
+            this.GetComponent<StateMachine>().ChangeState(new DestroyedState(explosion.main.duration));
+
+            Destroy(explosion, explosion.main.duration);
         }
 
         // Release Escape Pods

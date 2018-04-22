@@ -119,6 +119,7 @@ public class FleetManager : MonoBehaviour {
             ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
             ship.AddComponent<Escape>();
             ship.GetComponent<Escape>().enabled = false;
+            ship.GetComponent<Ship>().fleetManager = this;
 
             // There are line * 2 + 1 ships per line
             if (shipsPerLine > line * 2 - 1) {
@@ -144,6 +145,7 @@ public class FleetManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(ships.Count);
         // Put the job before so it can process in parallel with the velocity calculation
         PositionUpdateJob positionJob = new PositionUpdateJob() {
             velocity = velocities,
@@ -266,6 +268,8 @@ class Scene2 : State {
         followShip.enemy = fleetManager.borg;
         followShip.ship = fleetManager.ships[0].gameObject;
         followShip.shipComponent = followShip.ship.GetComponent<Ship>();
+
+        fleetManager.borg.GetComponent<Borg>().attack = true;
     }
 
     public override void Enter() {

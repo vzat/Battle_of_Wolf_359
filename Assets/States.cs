@@ -168,3 +168,67 @@ public class RunAwayState : State {
         flee.enabled = false;
     }
 }
+
+public class DestroyedState : State {
+    FleetManager fleetManager;
+    float explosionTime;
+    float timeElapsed = 0.0f;
+
+    public DestroyedState(float explosionTime) {
+        this.explosionTime = explosionTime;
+    }
+
+    void Destroy() {
+        fleetManager.ships.Remove(owner.GetComponent<Boid>());
+        owner.GetComponent<StateMachine>().ChangeState(new WreckState());
+
+        Boid boid = owner.GetComponent<Boid>();
+        boid.acceleration = Vector3.zero;
+        boid.velocity = Vector3.zero;
+
+        boid.minMaxSpeed = 0.0f;
+        boid.maxMaxSpeed = 0.0f;
+    }
+
+    public override void Enter() {
+        owner.GetComponent<Boid>().velocity = Vector3.zero;
+
+        Ship ship = owner.GetComponent<Ship>();
+        fleetManager = ship.fleetManager;
+    }
+
+    public override void Update() {
+        timeElapsed += Time.deltaTime;
+
+        if (timeElapsed > explosionTime) {
+            Destroy();
+        }
+    }
+
+    public override void Exit() {
+    }
+}
+
+public class WreckState : State {
+    Vector3 fromEnemy;
+    Boid boid;
+
+    public override void Enter() {
+        fromEnemy = Vector3.zero - owner.transform.position;
+        fromEnemy.Normalize();
+
+        boid = owner.GetComponent<Boid>();
+        boid.acceleration = Vector3.zero;
+        boid.velocity = fromEnemy;
+        boid.velocity = Vector3.ClampMagnitude(boid.velocity, 1);
+    }
+
+    public override void Update() {
+        owner.transform.rotation = owner.transform.rotation * Quaternion.Euler(fromEnemy * 0.02f);
+        boid.transform.position += boid.velocity * Time.deltaTime;
+    }
+
+    public override void Exit() {
+
+    }
+}

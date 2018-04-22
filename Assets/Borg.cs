@@ -7,6 +7,9 @@ public class Borg : MonoBehaviour {
     public Material tractorBeamMaterial;
     public Material cuttingBeamMaterial;
 
+    [HideInInspector]
+    public bool attack = false;
+
     List<Boid> ships = new List<Boid>();
     Boid capturedShip = null;
     Boid targetShip = null;
@@ -39,7 +42,7 @@ public class Borg : MonoBehaviour {
             }
 
             // Capture a random ship that is currently attacking the Borg Cube
-            if (noAttackingShips > 0) {
+            if (noAttackingShips > 0 && attack) {
                 int shipToCapture = (int)(Random.Range(0, noAttackingShips));
                 capturedShip = ships[shipToCapture];
 
@@ -60,6 +63,9 @@ public class Borg : MonoBehaviour {
 
     IEnumerator CuttingBeamTarget() {
         while (true) {
+            if (targetShip != null) {
+                targetShip.GetComponent<Ship>().structuralIntegrity -= Random.Range(50, 150);
+            }
             targetShip = null;
 
             yield return new WaitForSeconds(Random.Range(1, 2));
@@ -78,7 +84,7 @@ public class Borg : MonoBehaviour {
 
             // Choose a random ship to attack
             // The captured ship will be more likely to be attacked
-            if (noAttackingShips > 0) {
+            if (noAttackingShips > 0 && attack) {
                 if (Random.Range(1, 3) < 2 && capturedShip != null) {
                     // Attack Captured Ship
                     targetShip = capturedShip;
@@ -89,7 +95,6 @@ public class Borg : MonoBehaviour {
 
                     if (Vector3.Distance(targetShip.transform.position, transform.position) < 35.0f) {
                         cuttingBeamSource = Random.insideUnitSphere * 3.0f;
-                        targetShip.GetComponent<Ship>().structuralIntegrity -= Random.Range(50, 150);
                     }
                     else {
                         targetShip = null;
