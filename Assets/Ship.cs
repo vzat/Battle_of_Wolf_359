@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour {
     public Material phaserMaterial;
     public GameObject torpedoPrefab;
     public bool captured = false;
+    public float structuralIntegrity = 100.0f;
 
     bool firePhaser = false;
     bool fireTorpedoes = false;
@@ -29,6 +30,15 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Ship Destroyed
+        if (structuralIntegrity < 0.0f) {
+            
+        }
+
+        // Release Escape Pods
+        if (structuralIntegrity < 100.0f) {
+        }
+
         // Phaser
         if (firePhaser) {
             phaser.SetPosition(0, transform.position);
