@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tractorBeamMaterial: {fileID: 2100000, guid: e93e4068aadfd2e4eb4fe7ba00ace703, type: 2}
   cuttingBeamMaterial: {fileID: 2100000, guid: 21840a2554c629e4998fbe845d5c9351, type: 2}
+  attack: 0
 --- !u!1 &1694876631
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +406,7 @@ MonoBehaviour:
     type: 2}
   nebulaPrefab: {fileID: 1410655094860658, guid: 03cec21b6d610cd4a9a6f9c584f6acbd,
     type: 2}
-  mirandaPrefab: {fileID: 1353018510276968, guid: a5cb2867c20b2d94692a1c6b0717b256,
+  mirandaPrefab: {fileID: 1220040159881304, guid: a5cb2867c20b2d94692a1c6b0717b256,
     type: 2}
   apolloPrefab: {fileID: 1939422504654854, guid: 1cdec4dd40de6784eb6ae78a7c05dd92,
     type: 2}
