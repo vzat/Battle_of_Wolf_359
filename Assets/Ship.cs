@@ -20,6 +20,7 @@ public class Ship : MonoBehaviour {
 
     [HideInInspector]
     public bool destroyed = false;
+    public bool escapePodsReleased = false;
 
     IEnumerator fireWeapons;
 
@@ -38,6 +39,11 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Remove GameObject from scene
+        if (destroyed && Vector3.Distance(this.transform.position, Vector3.zero) > 100.0f) {
+            Destroy(this);
+        }
+
         if (structuralIntegrity < 0.0f && !destroyed) {
             // Ship Destroyed
             destroyed = true;
@@ -55,9 +61,21 @@ public class Ship : MonoBehaviour {
 
             Destroy(explosion, explosion.main.duration);
         }
-        else if (structuralIntegrity < 100.0f) {
+        else if (!escapePodsReleased && structuralIntegrity < 100.0f && structuralIntegrity > 0.0f) {
             // Release Escape Pods
-            
+            escapePodsReleased = true;
+            int noEscapePods = Random.Range(3, 5);
+
+            for (int i = 0; i < noEscapePods; i++) {
+                GameObject escapePod = Instantiate(fleetManager.escapePodPrefab);
+                escapePod.transform.parent = fleetManager.transform;
+                escapePod.transform.position = this.transform.position;
+                escapePod.AddComponent<EscapePod>();
+
+                Flee escapePodFlee = escapePod.GetComponent<Flee>();
+                escapePodFlee.enabled = true;
+                escapePodFlee.target = new Vector3(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5));
+            }
         }
 
         // Phaser

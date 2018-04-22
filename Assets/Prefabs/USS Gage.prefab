@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114157614464998882}
   - component: {fileID: 114640817593805704}
   - component: {fileID: 114619206588115090}
-  - component: {fileID: 114070252326517912}
   - component: {fileID: 114369852787993860}
   - component: {fileID: 114355083683368008}
   - component: {fileID: 114951840353890238}
@@ -170,21 +169,6 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetGameObj: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
---- !u!114 &114070252326517912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1939422504654854}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1943d01134b12b141b92e96b11ed3f10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  force: {x: 0, y: 0, z: 0}
-  boid: {fileID: 0}
-  path: {fileID: 0}
 --- !u!114 &114157614464998882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +185,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  maxForce: 20
   minMaxSpeed: 15
   maxMaxSpeed: 25
   jobSystemUpdate: 0
@@ -284,3 +269,4 @@ MonoBehaviour:
   explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
     type: 2}
   fleetManager: {fileID: 0}
+  destroyed: 0

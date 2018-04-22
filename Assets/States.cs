@@ -228,8 +228,6 @@ public class WreckState : State {
     public override void Update() {
         owner.transform.rotation = owner.transform.rotation * Quaternion.Euler(fromEnemy * Time.deltaTime * 3);
         boid.transform.position += velocity * Time.deltaTime;
-
-        Debug.Log(owner);
     }
 
     public override void Exit() {
