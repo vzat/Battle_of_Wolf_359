@@ -47,10 +47,12 @@ public class Borg : MonoBehaviour {
                 capturedShip = ships[shipToCapture];
 
                 // Do not capture the ship if it's out of range
-                if (Vector3.Distance(capturedShip.transform.position, transform.position) < 35.0f) {
-                    StateMachine shipStateMachine = capturedShip.GetComponent<StateMachine>();
-                    shipStateMachine.ChangeState(new CapturedState(gameObject));
-                    tractorBeamSource = Random.insideUnitSphere * 3.0f;
+                StateMachine shipStateMachine = capturedShip.GetComponent<StateMachine>();
+                if (Vector3.Distance(capturedShip.transform.position, transform.position) < 35.0f && 
+                    (shipStateMachine.state.GetType().Name == "AttackState" || 
+                     shipStateMachine.state.GetType().Name == "EscapeState")) {
+                        shipStateMachine.ChangeState(new CapturedState(gameObject));
+                        tractorBeamSource = Random.insideUnitSphere * 3.0f;
                 }
                 else {
                     capturedShip = null;
