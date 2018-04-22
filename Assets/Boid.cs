@@ -10,6 +10,7 @@ public class Boid : MonoBehaviour {
 
     public float maxSpeed = 10;
     public float mass = 1;
+    public float maxForce = 20.0f;
 
     [HideInInspector]
     public float minMaxSpeed = 15.0f;
@@ -61,6 +62,15 @@ public class Boid : MonoBehaviour {
         return desired;
     }
 
+    public bool AccumulateForce(ref Vector3 runningTotal, ref Vector3 force) {
+        float soFar = runningTotal.magnitude;
+        float remaining = maxForce - soFar;
+        Vector3 clampedForce = Vector3.ClampMagnitude(force, remaining);
+        runningTotal += clampedForce;
+
+        return force.magnitude >= remaining;
+    }
+
 	// Use this for initialization
 	void Start () {
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
@@ -84,11 +94,24 @@ public class Boid : MonoBehaviour {
     }
 
     public Vector3 Calculate() {
+        //Vector3 force = Vector3.zero;
+
+        //foreach (SteeringBehaviour behaviour in behaviours) {
+        //    if (behaviour.isActiveAndEnabled) {
+        //        force += behaviour.Calculate() * behaviour.weight;
+        //    }
+        //}
+
+        //return force;
+
         Vector3 force = Vector3.zero;
 
         foreach (SteeringBehaviour behaviour in behaviours) {
             if (behaviour.isActiveAndEnabled) {
-                force += behaviour.Calculate() * behaviour.weight;
+                Vector3 behaviourForce = behaviour.Calculate() * behaviour.weight;
+                bool full = AccumulateForce(ref force, ref behaviourForce);
+
+                if (full) break;
             }
         }
 

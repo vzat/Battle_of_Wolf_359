@@ -14,6 +14,7 @@ public class FleetManager : MonoBehaviour {
     public GameObject apolloPrefab;
     public GameObject oberthPrefab;
     public GameObject ambassadorPrefab;
+    public GameObject shuttlePrefab;
 
     [HideInInspector]
     public GameObject leader;

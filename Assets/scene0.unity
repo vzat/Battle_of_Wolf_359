@@ -414,6 +414,8 @@ MonoBehaviour:
     type: 2}
   ambassadorPrefab: {fileID: 1261762614097570, guid: 959ae53b77ab62d42894dc3680bac2c0,
     type: 2}
+  shuttlePrefab: {fileID: 1626176223210546, guid: 06379a2c506dad34e91c189ff91d0c7a,
+    type: 2}
   leader: {fileID: 0}
   ships: []
   borg: {fileID: 0}

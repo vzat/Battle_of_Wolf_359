@@ -18,7 +18,8 @@ public class Ship : MonoBehaviour {
 
     LineRenderer phaser;
 
-    bool destroyed = false;
+    [HideInInspector]
+    public bool destroyed = false;
 
     IEnumerator fireWeapons;
 
@@ -37,8 +38,8 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Ship Destroyed
         if (structuralIntegrity < 0.0f && !destroyed) {
+            // Ship Destroyed
             destroyed = true;
 
             // Stop firing weapons
@@ -54,9 +55,9 @@ public class Ship : MonoBehaviour {
 
             Destroy(explosion, explosion.main.duration);
         }
-
-        // Release Escape Pods
-        if (structuralIntegrity < 100.0f) {
+        else if (structuralIntegrity < 100.0f) {
+            // Release Escape Pods
+            
         }
 
         // Phaser
