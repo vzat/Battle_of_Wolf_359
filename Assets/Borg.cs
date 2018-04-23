@@ -9,19 +9,15 @@ public class Borg : MonoBehaviour {
 
     [HideInInspector]
     public bool attack = false;
-
-    List<Boid> ships = new List<Boid>();
-    Boid capturedShip = null;
-    Boid targetShip = null;
+    public List<Boid> ships = new List<Boid>();
+    public Boid capturedShip = null;
+    public Boid targetShip = null;
 
     LineRenderer tractorBeam;
     LineRenderer cuttingBeam;
 
     Vector3 tractorBeamSource = Vector3.zero;
     Vector3 cuttingBeamSource;
-
-    bool isMelbourneDestroyed = false;
-    bool isSaratogaDestroyed = false;
 
     IEnumerator TractorBeamTarget() {
         while (true) {
@@ -111,8 +107,13 @@ public class Borg : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
+    public void StartAI() {
+        StartCoroutine(TractorBeamTarget());
+        StartCoroutine(CuttingBeamTarget());
+    }
+
+    // Use this for initialization
+    void Start () {
         Object.DontDestroyOnLoad(this);
 
         GameObject fleetManagerObj = GameObject.Find("FleetManager");
@@ -136,7 +137,7 @@ public class Borg : MonoBehaviour {
         tractorBeam.startWidth = 0.1f;
         tractorBeam.endWidth = 5.0f;
 
-        StartCoroutine(TractorBeamTarget());
+        //StartCoroutine(TractorBeamTarget());
 
 
         // Setup cutting beam
@@ -146,13 +147,11 @@ public class Borg : MonoBehaviour {
         cuttingBeam.startWidth = 0.5f;
         cuttingBeam.endWidth = 0.5f;
 
-        StartCoroutine(CuttingBeamTarget());
+        //StartCoroutine(CuttingBeamTarget());
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-
         if (capturedShip != null) {
             tractorBeam.SetPosition(0, tractorBeamSource);
             tractorBeam.SetPosition(1, capturedShip.transform.position);

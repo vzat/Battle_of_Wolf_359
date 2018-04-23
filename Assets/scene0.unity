@@ -309,6 +309,9 @@ MonoBehaviour:
   tractorBeamMaterial: {fileID: 2100000, guid: e93e4068aadfd2e4eb4fe7ba00ace703, type: 2}
   cuttingBeamMaterial: {fileID: 2100000, guid: 21840a2554c629e4998fbe845d5c9351, type: 2}
   attack: 0
+  ships: []
+  capturedShip: {fileID: 0}
+  targetShip: {fileID: 0}
 --- !u!1 &1694876631
 GameObject:
   m_ObjectHideFlags: 0

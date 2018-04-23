@@ -259,10 +259,11 @@ class Scene1 : State {
 
 class Scene2 : State {
     FleetManager fleetManager;
-    VideoManager videoManager;
-    Ship ussSaratoga;
+    //VideoManager videoManager;
 
-    public bool videoPlayed;
+    //public bool videoPlayed;
+
+    bool isMelbourneDestroyed = false;
 
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene2", LoadSceneMode.Single);
@@ -274,48 +275,75 @@ class Scene2 : State {
         GameObject camera = GameObject.Find("Main Camera");
         FollowShip followShip = camera.GetComponent<FollowShip>();
         followShip.enemy = fleetManager.borg;
-        followShip.ship = fleetManager.ships[0].gameObject;
+        followShip.ship = fleetManager.ships[1].gameObject;
         followShip.shipComponent = followShip.ship.GetComponent<Ship>();
 
-        fleetManager.borg.GetComponent<Borg>().attack = true;
+        //fleetManager.borg.GetComponent<Borg>().attack = true;
+    }
+
+    IEnumerator DestroyMelbourne() {
+        yield return new WaitForSeconds(Random.Range(3, 5));
+
+        Borg borg = fleetManager.borg.GetComponent<Borg>();
+        borg.capturedShip = borg.ships[1];
+        borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
+
+        yield return new WaitForSeconds(Random.Range(1, 2));
+
+        borg.targetShip = borg.ships[1];
+
+        yield return new WaitForSeconds(Random.Range(3, 4));
+
+        borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
+        borg.capturedShip = null;
+        borg.targetShip = null;
+
+        isMelbourneDestroyed = true;
     }
 
     public override void Enter() {
         fleetManager = owner.GetComponent<FleetManager>();
 
         // Get VideoManager
-        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
-        videoManager.playingVideo = false;
-
-        // Get USS Saratoga
-        ussSaratoga = fleetManager.ships[0].GetComponent<Ship>();
+        //videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
+        //videoManager.playingVideo = false;
 
         // Load the scene and wait for it to initiallise
         fleetManager.StartCoroutine(LoadScene());
 
-        videoPlayed = false;
+        //videoPlayed = false;
+
+        // Destroy the USS Melbourne
+        fleetManager.StartCoroutine(DestroyMelbourne());
     }
 
     public override void Update() {
-        if (videoPlayed && !videoManager.playingVideo) {
+        if (isMelbourneDestroyed) {
             owner.ChangeState(new Scene3());
         }
+        //if (videoPlayed && !videoManager.playingVideo) {
+        //    owner.ChangeState(new Scene3());
+        //}
 
-        // The ship was hit a few times
-        if (!videoPlayed && !videoManager.playingVideo && ussSaratoga.structuralIntegrity + 151 < ussSaratoga.maxStructuralIntegrity) {
-            ussSaratoga.structuralIntegrity = 1;
-            videoManager.PlayVideo("./Assets/StreamingAssets/Sisko_Escape_Pod.mp4");
-            videoPlayed = true;
-        }
+        //// The ship was hit a few times
+        //if (!videoPlayed && !videoManager.playingVideo && ussSaratoga.structuralIntegrity + 151 < ussSaratoga.maxStructuralIntegrity) {
+        //    ussSaratoga.structuralIntegrity = 1;
+        //    videoManager.PlayVideo("./Assets/StreamingAssets/Sisko_Escape_Pod.mp4");
+        //    videoPlayed = true;
+        //}
     }
 
     public override void Exit() {
-
     }
 }
 
 class Scene3 : State {
     FleetManager fleetManager;
+    VideoManager videoManager;
+
+    FollowShip followShip;
+
+    bool videoPlayed = false;
 
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene3", LoadSceneMode.Single);
@@ -325,22 +353,59 @@ class Scene3 : State {
         }
 
         GameObject camera = GameObject.Find("Main Camera");
-        FollowShip followShip = camera.GetComponent<FollowShip>();
+        followShip = camera.GetComponent<FollowShip>();
         followShip.enemy = fleetManager.borg;
         followShip.ship = fleetManager.ships[0].gameObject;
         followShip.shipComponent = followShip.ship.GetComponent<Ship>();
 
-        fleetManager.borg.GetComponent<Borg>().attack = true;
+        //fleetManager.borg.GetComponent<Borg>().attack = true;
+    }
+
+    IEnumerator DestroySaratoga() {
+        yield return new WaitForSeconds(Random.Range(3, 5));
+
+        Borg borg = fleetManager.borg.GetComponent<Borg>();
+        borg.capturedShip = borg.ships[0];
+        borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
+
+        yield return new WaitForSeconds(Random.Range(2, 3));
+
+        borg.capturedShip.GetComponent<Ship>().structuralIntegrity = 50.0f;
+
+        yield return new WaitForSeconds(1);
+
+        // Not the correct gameobject?
+        GameObject escapePod = GameObject.Find("Escape Pod");
+        followShip.enemy = escapePod;
+        followShip.ship = escapePod;
+
+        yield return new WaitForSeconds(Random.Range(2, 3));
+
+        videoManager.PlayVideo("./Assets/StreamingAssets/Sisko_Escape_Pod.mp4");
+        videoPlayed = true;
+
+        yield return new WaitForSeconds(1);
+
+        borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
+        borg.capturedShip = null;
     }
 
     public override void Enter() {
         fleetManager = owner.GetComponent<FleetManager>();
 
+        // Get VideoManager
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
+
         // Load the scene and wait for it to initiallise
         fleetManager.StartCoroutine(LoadScene());
+
+        // Destroy the USS Saratoga
+        fleetManager.StartCoroutine(DestroySaratoga());
     }
 
     public override void Update() {
+        if (videoPlayed && !videoManager.playingVideo) {
+        }
     }
 
     public override void Exit() {
