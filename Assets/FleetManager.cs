@@ -26,6 +26,7 @@ public class FleetManager : MonoBehaviour {
     public float distLine = 10.0f;
     public float distCol = 10.0f;
     public Vector3 leaderPos = new Vector3(0, 0, -200);
+    public int shipsDestroyed = 0;
 
     // Job System
     Transform[] transforms;
@@ -182,7 +183,7 @@ public class FleetManager : MonoBehaviour {
                 ship.velocity *= 0.99f;
             }
 
-            velocities[i] = ship.velocity;
+            velocities[i + fleetNo - ships.Count] = ship.velocity;
         }
     }
 
@@ -282,13 +283,13 @@ class Scene2 : State {
     }
 
     IEnumerator DestroyMelbourne() {
-        yield return new WaitForSeconds(Random.Range(3, 5));
+        yield return new WaitForSeconds(Random.Range(10, 15));
 
         Borg borg = fleetManager.borg.GetComponent<Borg>();
         borg.capturedShip = borg.ships[1];
         borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
 
-        yield return new WaitForSeconds(Random.Range(1, 2));
+        yield return new WaitForSeconds(Random.Range(2, 3));
 
         borg.targetShip = borg.ships[1];
 
@@ -297,6 +298,8 @@ class Scene2 : State {
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
         borg.capturedShip = null;
         borg.targetShip = null;
+
+        yield return new WaitForSeconds(1);
 
         isMelbourneDestroyed = true;
     }
@@ -362,24 +365,25 @@ class Scene3 : State {
     }
 
     IEnumerator DestroySaratoga() {
-        yield return new WaitForSeconds(Random.Range(3, 5));
+        yield return new WaitForSeconds(Random.Range(10, 15));
 
         Borg borg = fleetManager.borg.GetComponent<Borg>();
         borg.capturedShip = borg.ships[0];
         borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
 
-        yield return new WaitForSeconds(Random.Range(2, 3));
+        yield return new WaitForSeconds(Random.Range(4, 7));
 
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = 50.0f;
 
         yield return new WaitForSeconds(1);
 
-        // Not the correct gameobject?
-        GameObject escapePod = GameObject.Find("Escape Pod");
+        // Follow escape pod
+        GameObject escapePod = GameObject.FindGameObjectsWithTag("EscapePod")[0];
         followShip.enemy = escapePod;
         followShip.ship = escapePod;
+        followShip.shipComponent = null;
 
-        yield return new WaitForSeconds(Random.Range(2, 3));
+        yield return new WaitForSeconds(Random.Range(3, 4));
 
         videoManager.PlayVideo("./Assets/StreamingAssets/Sisko_Escape_Pod.mp4");
         videoPlayed = true;
@@ -387,6 +391,7 @@ class Scene3 : State {
         yield return new WaitForSeconds(1);
 
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
+        followShip.ship = borg.gameObject;
         borg.capturedShip = null;
     }
 
@@ -405,7 +410,51 @@ class Scene3 : State {
 
     public override void Update() {
         if (videoPlayed && !videoManager.playingVideo) {
+            owner.ChangeState(new Scene4());
         }
+    }
+
+    public override void Exit() {
+    }
+}
+
+class Scene4 : State {
+    FleetManager fleetManager;
+
+    IEnumerator LoadScene() {
+        AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene4", LoadSceneMode.Single);
+
+        while (!asyncSceneChange.isDone) {
+            yield return null;
+        }
+
+        GameObject camera = GameObject.Find("Main Camera");
+        FollowCamera followCamera = camera.GetComponent<FollowCamera>();
+        //followCamera.target = fleetManager.ships[0].gameObject;
+        followCamera.target = fleetManager.borg;
+
+        Borg borg = fleetManager.borg.GetComponent<Borg>();
+        borg.attack = true;
+        borg.StartAI();
+    }
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        // Set more ships to attack
+        int shipsToAttack = Random.Range(fleetManager.shipsDestroyed + 3, fleetManager.shipsDestroyed + 5);
+        for (int i = fleetManager.shipsDestroyed + 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
+            Boid ship = fleetManager.ships[i];
+            ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
+            ship.maxSpeed = 20.0f;
+            ship.StartCoroutine(ship.ChangeSpeed());
+        }
+
+        // Load the scene and wait for it to initiallise
+        fleetManager.StartCoroutine(LoadScene());
+     }
+
+    public override void Update() {
     }
 
     public override void Exit() {

@@ -41,9 +41,9 @@ public class Ship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // Remove GameObject from scene
-        if (destroyed && Vector3.Distance(this.transform.position, Vector3.zero) > 100.0f) {
-            Destroy(this);
-        }
+        //if (destroyed && Vector3.Distance(this.transform.position, Vector3.zero) > 100.0f) {
+        //    //Destroy(this);
+        //}
 
         if (structuralIntegrity < 0.0f && !destroyed) {
             // Ship Destroyed

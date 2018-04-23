@@ -3603,7 +3603,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445955831838374}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3, z: -4}
+  m_LocalPosition: {x: 0.5, y: -2, z: -1}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 4107341114166164}
@@ -3775,7 +3775,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091684208798678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8, y: 0, z: -112.9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4585216059447372}
@@ -10472,6 +10472,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  maxForce: 20
   minMaxSpeed: 15
   maxMaxSpeed: 25
   jobSystemUpdate: 0
@@ -10537,7 +10538,10 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
   captured: 0
+  maxStructuralIntegrity: 100
   structuralIntegrity: 100
   explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
     type: 2}
   fleetManager: {fileID: 0}
+  destroyed: 0
+  escapePodsReleased: 0

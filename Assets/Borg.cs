@@ -19,7 +19,10 @@ public class Borg : MonoBehaviour {
     Vector3 tractorBeamSource = Vector3.zero;
     Vector3 cuttingBeamSource;
 
+    FleetManager fleetManager;
+
     IEnumerator TractorBeamTarget() {
+        yield return new WaitForSeconds(Random.Range(2, 3));
         while (true) {
             if (capturedShip != null) {
                 capturedShip.GetComponent<Ship>().captured = false;
@@ -29,7 +32,8 @@ public class Borg : MonoBehaviour {
             yield return new WaitForSeconds(Random.Range(2, 4));
 
             int noAttackingShips = 0;
-            foreach (Boid ship in ships) {
+            for (int i = fleetManager.shipsDestroyed; i < ships.Count; i++) {
+                Boid ship = ships[i];
                 StateMachine shipStateMachine = ship.GetComponent<StateMachine>();
                 State shipState = shipStateMachine.state;
 
@@ -43,7 +47,7 @@ public class Borg : MonoBehaviour {
             // Capture a random ship that is currently attacking the Borg Cube
             if (noAttackingShips > 0 && attack) {
                 int shipToCapture = (int)(Random.Range(0, noAttackingShips));
-                capturedShip = ships[shipToCapture];
+                capturedShip = ships[fleetManager.shipsDestroyed + shipToCapture];
 
                 // Do not capture the ship if it's out of range
                 StateMachine shipStateMachine = capturedShip.GetComponent<StateMachine>();
@@ -63,6 +67,7 @@ public class Borg : MonoBehaviour {
     }
 
     IEnumerator CuttingBeamTarget() {
+        yield return new WaitForSeconds(Random.Range(2, 3));
         while (true) {
             if (targetShip != null) {
                 targetShip.GetComponent<Ship>().structuralIntegrity -= Random.Range(50, 150);
@@ -72,7 +77,8 @@ public class Borg : MonoBehaviour {
             yield return new WaitForSeconds(Random.Range(1, 2));
 
             int noAttackingShips = 0;
-            foreach (Boid ship in ships) {
+            for (int i = fleetManager.shipsDestroyed; i < ships.Count; i++) {
+                Boid ship = ships[i];
                 StateMachine shipStateMachine = ship.GetComponent<StateMachine>();
                 State shipState = shipStateMachine.state;
 
@@ -92,7 +98,7 @@ public class Borg : MonoBehaviour {
                 } 
                 else {
                     int shipToAttack = (int)(Random.Range(0, noAttackingShips));
-                    targetShip = ships[shipToAttack];
+                    targetShip = ships[fleetManager.shipsDestroyed + shipToAttack];
 
                     if (Vector3.Distance(targetShip.transform.position, transform.position) < 35.0f) {
                         cuttingBeamSource = Random.insideUnitSphere * 3.0f;
@@ -117,7 +123,7 @@ public class Borg : MonoBehaviour {
         Object.DontDestroyOnLoad(this);
 
         GameObject fleetManagerObj = GameObject.Find("FleetManager");
-        FleetManager fleetManager = fleetManagerObj.GetComponent<FleetManager>();
+        fleetManager = fleetManagerObj.GetComponent<FleetManager>();
 
         ships = fleetManager.ships;
 

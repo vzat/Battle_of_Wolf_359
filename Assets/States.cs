@@ -124,7 +124,7 @@ public class CapturedState : State {
         ship = owner.GetComponent<Ship>();
 
         // Stop the ship in the current place
-        boid.velocity = Vector3.zero;
+        boid.velocity = Vector3.ClampMagnitude(boid.velocity, 0.0001f);
 
         ship.captured = true;
     }
@@ -179,7 +179,9 @@ public class DestroyedState : State {
     }
 
     void Destroy() {
-        fleetManager.ships.Remove(owner.GetComponent<Boid>());
+        //fleetManager.ships.Remove(owner.GetComponent<Boid>());
+        //fleetManager.borg.GetComponent<Borg>().ships.Remove(owner.GetComponent<Boid>());
+        fleetManager.shipsDestroyed++;
         owner.GetComponent<StateMachine>().ChangeState(new WreckState());
     }
 
@@ -191,7 +193,7 @@ public class DestroyedState : State {
 
         Boid boid = owner.GetComponent<Boid>();
         boid.acceleration = Vector3.zero;
-        boid.velocity = Vector3.zero;
+        boid.velocity = Vector3.ClampMagnitude(boid.velocity, 0.0001f);
 
         boid.minMaxSpeed = 0.0f;
         boid.maxMaxSpeed = 0.0f;
