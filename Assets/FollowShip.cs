@@ -15,7 +15,7 @@ public class FollowShip : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (shipComponent != null && shipComponent.captured) {
+        if (shipComponent != null && shipComponent.destroyed) {
             transform.position = Vector3.Lerp(
                 this.transform.position,
                 ship.transform.TransformPoint(new Vector3(0, 10.0f, 5.0f)),

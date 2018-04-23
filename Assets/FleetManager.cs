@@ -135,6 +135,10 @@ public class FleetManager : MonoBehaviour {
 
             if (i == 0) {
                 mainCamera.target = ship;
+
+                Ship shipComp = ship.GetComponent<Ship>();
+                shipComp.structuralIntegrity = 1000.0f;
+                shipComp.maxStructuralIntegrity = 1000.0f;
             }
 
             // Get ship transform
@@ -146,7 +150,6 @@ public class FleetManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(ships.Count);
         // Put the job before so it can process in parallel with the velocity calculation
         PositionUpdateJob positionJob = new PositionUpdateJob() {
             velocity = velocities,
@@ -244,7 +247,7 @@ class Scene1 : State {
             owner.ChangeState(new Scene2());
         }
 
-        if (!videoManager.playingVideo && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 35.0f) {
+        if (!videoPlayed && !videoManager.playingVideo && Vector3.Distance(fleetManager.ships[1].transform.position, fleetManager.borg.transform.position) < 35.0f) {
             videoManager.PlayVideo("./Assets/StreamingAssets/Locutus_of_Borg.mp4");
             videoPlayed = true;
         }
@@ -256,6 +259,10 @@ class Scene1 : State {
 
 class Scene2 : State {
     FleetManager fleetManager;
+    VideoManager videoManager;
+    Ship ussSaratoga;
+
+    public bool videoPlayed;
 
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene2", LoadSceneMode.Single);
@@ -276,14 +283,66 @@ class Scene2 : State {
     public override void Enter() {
         fleetManager = owner.GetComponent<FleetManager>();
 
+        // Get VideoManager
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
+        videoManager.playingVideo = false;
+
+        // Get USS Saratoga
+        ussSaratoga = fleetManager.ships[0].GetComponent<Ship>();
+
+        // Load the scene and wait for it to initiallise
         fleetManager.StartCoroutine(LoadScene());
+
+        videoPlayed = false;
     }
 
     public override void Update() {
-        
+        if (videoPlayed && !videoManager.playingVideo) {
+            owner.ChangeState(new Scene3());
+        }
+
+        // The ship was hit a few times
+        if (!videoPlayed && !videoManager.playingVideo && ussSaratoga.structuralIntegrity + 151 < ussSaratoga.maxStructuralIntegrity) {
+            ussSaratoga.structuralIntegrity = 1;
+            videoManager.PlayVideo("./Assets/StreamingAssets/Sisko_Escape_Pod.mp4");
+            videoPlayed = true;
+        }
     }
 
     public override void Exit() {
 
+    }
+}
+
+class Scene3 : State {
+    FleetManager fleetManager;
+
+    IEnumerator LoadScene() {
+        AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene3", LoadSceneMode.Single);
+
+        while (!asyncSceneChange.isDone) {
+            yield return null;
+        }
+
+        GameObject camera = GameObject.Find("Main Camera");
+        FollowShip followShip = camera.GetComponent<FollowShip>();
+        followShip.enemy = fleetManager.borg;
+        followShip.ship = fleetManager.ships[0].gameObject;
+        followShip.shipComponent = followShip.ship.GetComponent<Ship>();
+
+        fleetManager.borg.GetComponent<Borg>().attack = true;
+    }
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        // Load the scene and wait for it to initiallise
+        fleetManager.StartCoroutine(LoadScene());
+    }
+
+    public override void Update() {
+    }
+
+    public override void Exit() {
     }
 }

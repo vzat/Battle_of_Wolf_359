@@ -20,6 +20,9 @@ public class Borg : MonoBehaviour {
     Vector3 tractorBeamSource = Vector3.zero;
     Vector3 cuttingBeamSource;
 
+    bool isMelbourneDestroyed = false;
+    bool isSaratogaDestroyed = false;
+
     IEnumerator TractorBeamTarget() {
         while (true) {
             if (capturedShip != null) {
@@ -148,6 +151,8 @@ public class Borg : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         if (capturedShip != null) {
             tractorBeam.SetPosition(0, tractorBeamSource);
             tractorBeam.SetPosition(1, capturedShip.transform.position);

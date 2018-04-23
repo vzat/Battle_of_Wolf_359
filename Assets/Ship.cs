@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour {
     public Material phaserMaterial;
     public GameObject torpedoPrefab;
     public bool captured = false;
+    public float maxStructuralIntegrity = 100.0f;
     public float structuralIntegrity = 100.0f;
     public ParticleSystem explosionPrefab;
     public FleetManager fleetManager;
