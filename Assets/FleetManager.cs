@@ -34,6 +34,25 @@ public class FleetManager : MonoBehaviour {
     TransformAccessArray transformAccessArray;
     NativeArray<Vector3> velocities;
 
+    public void RemoveShip(Boid ship) {
+        // Get ship no
+        int shipNo = ships.IndexOf(ship);
+
+        // Remove ship from list
+        ships.RemoveAt(shipNo);
+
+        // Recreate the velocities array
+        List<Vector3> tempVelocities = new List<Vector3>(velocities.ToArray());
+        tempVelocities.RemoveAt(shipNo);
+        velocities.Dispose();
+        velocities = new NativeArray<Vector3>(ships.Count, Allocator.Persistent);
+        velocities.CopyFrom(tempVelocities.ToArray());
+
+        // Remove from transfrom access array
+        // TODO: Find another method
+        transformAccessArray.RemoveAtSwapBack(shipNo);
+    }
+
     struct PositionUpdateJob : IJobParallelForTransform {
         [ReadOnly]
         public NativeArray<Vector3> velocity;
@@ -151,7 +170,7 @@ public class FleetManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Put the job before so it can process in parallel with the velocity calculation
+        // Put the job before so it can process in parallel
         PositionUpdateJob positionJob = new PositionUpdateJob() {
             velocity = velocities,
             deltaTime = Time.deltaTime
@@ -183,7 +202,7 @@ public class FleetManager : MonoBehaviour {
                 ship.velocity *= 0.99f;
             }
 
-            velocities[i + fleetNo - ships.Count] = ship.velocity;
+            velocities[i] = ship.velocity;
         }
     }
 
@@ -442,8 +461,8 @@ class Scene4 : State {
         fleetManager = owner.GetComponent<FleetManager>();
 
         // Set more ships to attack
-        int shipsToAttack = Random.Range(fleetManager.shipsDestroyed + 3, fleetManager.shipsDestroyed + 5);
-        for (int i = fleetManager.shipsDestroyed + 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
+        int shipsToAttack = Random.Range(3, 5);
+        for (int i = 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
             Boid ship = fleetManager.ships[i];
             ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
             ship.maxSpeed = 20.0f;

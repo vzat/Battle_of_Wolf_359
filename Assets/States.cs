@@ -179,6 +179,8 @@ public class DestroyedState : State {
     }
 
     void Destroy() {
+        fleetManager.RemoveShip(owner.GetComponent<Boid>());
+
         //fleetManager.ships.Remove(owner.GetComponent<Boid>());
         //fleetManager.borg.GetComponent<Borg>().ships.Remove(owner.GetComponent<Boid>());
         fleetManager.shipsDestroyed++;
