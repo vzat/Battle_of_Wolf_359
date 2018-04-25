@@ -49,8 +49,13 @@ public class FleetManager : MonoBehaviour {
         velocities.CopyFrom(tempVelocities.ToArray());
 
         // Remove from transfrom access array
-        // TODO: Find another method
-        transformAccessArray.RemoveAtSwapBack(shipNo);
+        transformAccessArray.Dispose();
+        Transform[] tempTransforms = new Transform[ships.Count];
+        for (int i = 0; i < ships.Count; i++) {
+            tempTransforms[i] = ships[i].transform;
+        }
+        transformAccessArray = new TransformAccessArray(tempTransforms);
+        //transformAccessArray.RemoveAtSwapBack(shipNo);
     }
 
     struct PositionUpdateJob : IJobParallelForTransform {
