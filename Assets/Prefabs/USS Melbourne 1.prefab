@@ -578,6 +578,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4881722545574002}
+  - component: {fileID: 114941193707583104}
   - component: {fileID: 114883433127118074}
   - component: {fileID: 114687539456613856}
   - component: {fileID: 114839999111757554}
@@ -1172,7 +1173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374032836744036}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 3}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4796540547286326}
@@ -1224,7 +1225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817672864137128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.6, y: 0, z: -103.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4854790153515574}
@@ -2999,6 +3000,10 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  maxForce: 20
+  minMaxSpeed: 15
+  maxMaxSpeed: 25
+  jobSystemUpdate: 0
 --- !u!114 &114896542772119292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3013,3 +3018,27 @@ MonoBehaviour:
   phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
+  captured: 0
+  maxStructuralIntegrity: 100
+  structuralIntegrity: 100
+  explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
+    type: 2}
+  fleetManager: {fileID: 0}
+  destroyed: 0
+  escapePodsReleased: 0
+--- !u!114 &114941193707583104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817672864137128}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9f8c5e12e1e6d43a4904a232fe26b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  targetGameObj: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}

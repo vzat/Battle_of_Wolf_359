@@ -2828,6 +2828,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4841958540670904}
+  - component: {fileID: 114108063423709084}
   - component: {fileID: 114042345448010650}
   - component: {fileID: 114051291636184006}
   - component: {fileID: 114156631042268932}
@@ -44797,6 +44798,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  minMaxSpeed: 15
+  maxMaxSpeed: 25
+  jobSystemUpdate: 0
 --- !u!114 &114051291636184006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44809,6 +44813,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &114108063423709084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261762614097570}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9f8c5e12e1e6d43a4904a232fe26b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  targetGameObj: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &114156631042268932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44872,6 +44892,11 @@ MonoBehaviour:
   phaserMaterial: {fileID: 2100000, guid: 75f2abe8f148edc4099a3a60fd7d12f6, type: 2}
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
+  captured: 0
+  structuralIntegrity: 100
+  explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
+    type: 2}
+  fleetManager: {fileID: 0}
 --- !u!114 &114897656413468476
 MonoBehaviour:
   m_ObjectHideFlags: 1

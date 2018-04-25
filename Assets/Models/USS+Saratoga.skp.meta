@@ -1,0 +1,427 @@
+fileFormatVersion: 2
+guid: 570142dcc7303224caa4cda78821e586
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000062000000630000006400000065000000660000006700000068000000690000006a0000006b0000006c0000006d0000006e0000006f000000700000007100000072000000730000007400000075000000760000007700000078000000790000007a0000007b0000007c0000007d0000007e0000007f00000080000000810000008200000083000000840000008500000086000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 3ef4d5c6ed3ddb9754566db0c70c613f
+  longitude: -105.283
+  latitude: 40.017
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 156.47447, y: 163.4439, z: -70.39969}
+      lookAt: {x: -15729.072, y: -15089.1875, z: 10298.34}
+      up: {x: -0.52472734, y: 0.77933097, z: 0.34249756}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Consitution bridge
+    100002: Dome Green
+    100004: Dome Green 1
+    100006: Dome Green 2
+    100008: Dome Green 3
+    100010: Dome Red
+    100012: Dome Red 1
+    100014: Dome Red 2
+    100016: Dome Red 3
+    100018: Elevator
+    100020: Group 10
+    100022: Group 12
+    100024: Group 121
+    100026: Group 123
+    100028: Group 14
+    100030: Group 16
+    100032: Group 18
+    100034: Group 20
+    100036: Group 22
+    100038: Group 24
+    100040: Group 26
+    100042: Group 28
+    100044: Group 30
+    100046: Group 32
+    100048: Group 34
+    100050: Group 36
+    100052: Group 38
+    100054: Group 40
+    100056: Group 42
+    100058: Group 44
+    100060: Group 46
+    100062: Group 48
+    100064: Group 50
+    100066: Group 52
+    100068: Group 54
+    100070: Group 56
+    100072: Group 58
+    100074: Group 60
+    100076: Group 62
+    100078: Group 64
+    100080: Group 66
+    100082: Group 68
+    100084: Group 70
+    100086: Group 72
+    100088: Group 74
+    100090: Group 76
+    100092: Group 78
+    100094: Group 8
+    100096: Group 80
+    100098: Group 82
+    100100: Group 84
+    100102: Group 86
+    100104: Group 88
+    100106: Group 90
+    100108: Group 92
+    100110: Group 94
+    100112: Miranda ext w imp
+    100114: Nacelle Left
+    100116: Nacelle Right
+    100118: Pylon1
+    100120: Pylon1 1
+    100122: Saucer lower 4
+    100124: Saucer lower1
+    100126: Saucer lower1 1
+    100128: Saucer rev
+    100130: Tube side
+    100132: Tube side 1
+    100134: USS Saratoga w lights and text
+    100136: //RootNode
+    400000: Consitution bridge
+    400002: Dome Green
+    400004: Dome Green 1
+    400006: Dome Green 2
+    400008: Dome Green 3
+    400010: Dome Red
+    400012: Dome Red 1
+    400014: Dome Red 2
+    400016: Dome Red 3
+    400018: Elevator
+    400020: Group 10
+    400022: Group 12
+    400024: Group 121
+    400026: Group 123
+    400028: Group 14
+    400030: Group 16
+    400032: Group 18
+    400034: Group 20
+    400036: Group 22
+    400038: Group 24
+    400040: Group 26
+    400042: Group 28
+    400044: Group 30
+    400046: Group 32
+    400048: Group 34
+    400050: Group 36
+    400052: Group 38
+    400054: Group 40
+    400056: Group 42
+    400058: Group 44
+    400060: Group 46
+    400062: Group 48
+    400064: Group 50
+    400066: Group 52
+    400068: Group 54
+    400070: Group 56
+    400072: Group 58
+    400074: Group 60
+    400076: Group 62
+    400078: Group 64
+    400080: Group 66
+    400082: Group 68
+    400084: Group 70
+    400086: Group 72
+    400088: Group 74
+    400090: Group 76
+    400092: Group 78
+    400094: Group 8
+    400096: Group 80
+    400098: Group 82
+    400100: Group 84
+    400102: Group 86
+    400104: Group 88
+    400106: Group 90
+    400108: Group 92
+    400110: Group 94
+    400112: Miranda ext w imp
+    400114: Nacelle Left
+    400116: Nacelle Right
+    400118: Pylon1
+    400120: Pylon1 1
+    400122: Saucer lower 4
+    400124: Saucer lower1
+    400126: Saucer lower1 1
+    400128: Saucer rev
+    400130: Tube side
+    400132: Tube side 1
+    400134: USS Saratoga w lights and text
+    400136: //RootNode
+    2100000: _defaultMat
+    2100002: _2
+    2100004: '[Color_A11]'
+    2100006: _DimGray_
+    2100008: '[Color_004]'
+    2100010: '[Color_001]'
+    2100012: _Charcoal_
+    2100014: _LightGray_
+    2100016: '[Translucent_Glass_Blue]'
+    2100018: _Burnt Umber_1
+    2100020: '[Color_A07]'
+    2100022: '[Translucent_Glass_Blue]1'
+    2100024: '[Color_009]'
+    2100026: '[Color_I06]'
+    2100028: '[Color_G01]'
+    2100030: _3
+    2100032: '[Translucent_Glass_Blue]2'
+    2100034: '[Color_006]'
+    2300000: Consitution bridge
+    2300002: Dome Green
+    2300004: Dome Green 1
+    2300006: Dome Green 2
+    2300008: Dome Green 3
+    2300010: Dome Red
+    2300012: Dome Red 1
+    2300014: Dome Red 2
+    2300016: Dome Red 3
+    2300018: Elevator
+    2300020: Group 10
+    2300022: Group 12
+    2300024: Group 121
+    2300026: Group 123
+    2300028: Group 14
+    2300030: Group 16
+    2300032: Group 18
+    2300034: Group 20
+    2300036: Group 22
+    2300038: Group 24
+    2300040: Group 26
+    2300042: Group 28
+    2300044: Group 30
+    2300046: Group 32
+    2300048: Group 34
+    2300050: Group 36
+    2300052: Group 38
+    2300054: Group 40
+    2300056: Group 42
+    2300058: Group 44
+    2300060: Group 46
+    2300062: Group 48
+    2300064: Group 50
+    2300066: Group 52
+    2300068: Group 54
+    2300070: Group 56
+    2300072: Group 58
+    2300074: Group 60
+    2300076: Group 62
+    2300078: Group 64
+    2300080: Group 66
+    2300082: Group 68
+    2300084: Group 70
+    2300086: Group 72
+    2300088: Group 74
+    2300090: Group 76
+    2300092: Group 78
+    2300094: Group 8
+    2300096: Group 80
+    2300098: Group 82
+    2300100: Group 84
+    2300102: Group 86
+    2300104: Group 88
+    2300106: Group 90
+    2300108: Group 92
+    2300110: Group 94
+    2300112: Miranda ext w imp
+    2300114: Nacelle Left
+    2300116: Nacelle Right
+    2300118: Pylon1
+    2300120: Pylon1 1
+    2300122: Saucer lower1
+    2300124: Saucer lower1 1
+    2300126: Saucer rev
+    2300128: Tube side
+    2300130: Tube side 1
+    3300000: Consitution bridge
+    3300002: Dome Green
+    3300004: Dome Green 1
+    3300006: Dome Green 2
+    3300008: Dome Green 3
+    3300010: Dome Red
+    3300012: Dome Red 1
+    3300014: Dome Red 2
+    3300016: Dome Red 3
+    3300018: Elevator
+    3300020: Group 10
+    3300022: Group 12
+    3300024: Group 121
+    3300026: Group 123
+    3300028: Group 14
+    3300030: Group 16
+    3300032: Group 18
+    3300034: Group 20
+    3300036: Group 22
+    3300038: Group 24
+    3300040: Group 26
+    3300042: Group 28
+    3300044: Group 30
+    3300046: Group 32
+    3300048: Group 34
+    3300050: Group 36
+    3300052: Group 38
+    3300054: Group 40
+    3300056: Group 42
+    3300058: Group 44
+    3300060: Group 46
+    3300062: Group 48
+    3300064: Group 50
+    3300066: Group 52
+    3300068: Group 54
+    3300070: Group 56
+    3300072: Group 58
+    3300074: Group 60
+    3300076: Group 62
+    3300078: Group 64
+    3300080: Group 66
+    3300082: Group 68
+    3300084: Group 70
+    3300086: Group 72
+    3300088: Group 74
+    3300090: Group 76
+    3300092: Group 78
+    3300094: Group 8
+    3300096: Group 80
+    3300098: Group 82
+    3300100: Group 84
+    3300102: Group 86
+    3300104: Group 88
+    3300106: Group 90
+    3300108: Group 92
+    3300110: Group 94
+    3300112: Miranda ext w imp
+    3300114: Nacelle Left
+    3300116: Nacelle Right
+    3300118: Pylon1
+    3300120: Pylon1 1
+    3300122: Saucer lower1
+    3300124: Saucer lower1 1
+    3300126: Saucer rev
+    3300128: Tube side
+    3300130: Tube side 1
+    4300000: Mesh Tube side
+    4300002: Mesh Dome Red
+    4300004: Mesh Miranda ext w imp
+    4300006: Mesh Group 8
+    4300008: Mesh Group 10
+    4300010: Mesh Group 12
+    4300012: Mesh Group 14
+    4300014: Mesh Group 16
+    4300016: Mesh Group 18
+    4300018: Mesh Group 24
+    4300020: Mesh Group 26
+    4300022: Mesh Group 30
+    4300024: Mesh Group 32
+    4300026: Mesh Group 36
+    4300028: Mesh Group 44
+    4300030: Mesh Group 46
+    4300032: Mesh Group 48
+    4300034: Mesh Group 52
+    4300036: Mesh Group 54
+    4300038: Mesh Group 58
+    4300040: Mesh Group 70
+    4300042: Mesh Group 84
+    4300044: Mesh Nacelle Right
+    4300046: Mesh Dome Green
+    4300048: Mesh Consitution bridge
+    4300050: Mesh Elevator
+    4300052: Mesh Nacelle Left
+    4300054: Mesh Saucer lower1
+    4300056: Mesh Pylon1
+    4300058: Mesh Saucer rev
+    4300060: Mesh Group 121
+    4300062: Mesh Dome Red
+    4300064: Mesh Dome Green
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

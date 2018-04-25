@@ -306,6 +306,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e6c3c698328084bb227152e2653e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tractorBeamMaterial: {fileID: 2100000, guid: e93e4068aadfd2e4eb4fe7ba00ace703, type: 2}
+  cuttingBeamMaterial: {fileID: 2100000, guid: 21840a2554c629e4998fbe845d5c9351, type: 2}
+  attack: 0
+  ships: []
+  capturedShip: {fileID: 0}
+  targetShip: {fileID: 0}
 --- !u!1 &1694876631
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,13 +409,15 @@ MonoBehaviour:
     type: 2}
   nebulaPrefab: {fileID: 1410655094860658, guid: 03cec21b6d610cd4a9a6f9c584f6acbd,
     type: 2}
-  mirandaPrefab: {fileID: 1353018510276968, guid: a5cb2867c20b2d94692a1c6b0717b256,
+  mirandaPrefab: {fileID: 1220040159881304, guid: a5cb2867c20b2d94692a1c6b0717b256,
     type: 2}
   apolloPrefab: {fileID: 1939422504654854, guid: 1cdec4dd40de6784eb6ae78a7c05dd92,
     type: 2}
   oberthPrefab: {fileID: 1091684208798678, guid: bca6851bc3041b44bb578fc72177b577,
     type: 2}
   ambassadorPrefab: {fileID: 1261762614097570, guid: 959ae53b77ab62d42894dc3680bac2c0,
+    type: 2}
+  escapePodPrefab: {fileID: 1626176223210546, guid: 06379a2c506dad34e91c189ff91d0c7a,
     type: 2}
   leader: {fileID: 0}
   ships: []

@@ -19,9 +19,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4555560590285266}
+  - component: {fileID: 114549526616843002}
+  - component: {fileID: 114067979452635272}
+  - component: {fileID: 114890086162198940}
   m_Layer: 0
   m_Name: EscapePod
-  m_TagString: Untagged
+  m_TagString: EscapePod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,3 +119,50 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761244503238048}
   m_Mesh: {fileID: 4300000, guid: 1a13b9f3fa3e5d64a894b10465be1ea9, type: 3}
+--- !u!114 &114067979452635272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626176223210546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9f8c5e12e1e6d43a4904a232fe26b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  targetGameObj: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+--- !u!114 &114549526616843002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626176223210546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe7fcb3252957f4bb36ddd85a2e1e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  maxSpeed: 10
+  mass: 1
+  maxForce: 20
+  minMaxSpeed: 15
+  maxMaxSpeed: 25
+  jobSystemUpdate: 0
+--- !u!114 &114890086162198940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626176223210546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f76b7de3d2d64e489f83617a8b9b756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
