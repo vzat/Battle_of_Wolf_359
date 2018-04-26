@@ -2829,6 +2829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841958540670904}
   - component: {fileID: 114108063423709084}
+  - component: {fileID: 114887943085107266}
   - component: {fileID: 114042345448010650}
   - component: {fileID: 114051291636184006}
   - component: {fileID: 114156631042268932}
@@ -2836,6 +2837,7 @@ GameObject:
   - component: {fileID: 114432102570949404}
   - component: {fileID: 114897656413468476}
   - component: {fileID: 114759801202543328}
+  - component: {fileID: 135345787999796688}
   m_Layer: 0
   m_Name: USS Yamaguchi
   m_TagString: Untagged
@@ -44798,6 +44800,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   maxSpeed: 10
   mass: 1
+  maxForce: 20
   minMaxSpeed: 15
   maxMaxSpeed: 25
   jobSystemUpdate: 0
@@ -44893,10 +44896,37 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
   captured: 0
+  maxStructuralIntegrity: 100
   structuralIntegrity: 100
   explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
     type: 2}
   fleetManager: {fileID: 0}
+  destroyed: 0
+  escapePodsReleased: 0
+--- !u!114 &114887943085107266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261762614097570}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  scale: 4
+  forwardFeelerDepth: 20
+  sideFeelerDepth: 10
+  frontFeelerUpdatesPerSecond: 10
+  sideFeelerUpdatesPerSecond: 5
+  feelerRadius: 2
+  forceType: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114897656413468476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44909,3 +44939,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+--- !u!135 &135345787999796688
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261762614097570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0.5, z: -1.5}

@@ -55,7 +55,6 @@ public class FleetManager : MonoBehaviour {
             tempTransforms[i] = ships[i].transform;
         }
         transformAccessArray = new TransformAccessArray(tempTransforms);
-        //transformAccessArray.RemoveAtSwapBack(shipNo);
     }
 
     struct PositionUpdateJob : IJobParallelForTransform {

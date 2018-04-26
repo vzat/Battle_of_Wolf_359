@@ -66,6 +66,8 @@ public class AttackState : State {
         seek.targetGameObj = enemy;
 
         stateMachine = owner.GetComponent<StateMachine>();
+
+        owner.GetComponent<ObstacleAvoidance>().enabled = true;
     }
 
     public override void Update() {
@@ -184,6 +186,7 @@ public class DestroyedState : State {
         //fleetManager.ships.Remove(owner.GetComponent<Boid>());
         //fleetManager.borg.GetComponent<Borg>().ships.Remove(owner.GetComponent<Boid>());
         fleetManager.shipsDestroyed++;
+        owner.GetComponent<ObstacleAvoidance>().enabled = false;
         owner.GetComponent<StateMachine>().ChangeState(new WreckState());
     }
 

@@ -295,6 +295,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1554401196631154, guid: 66f465d71a1777f4ea3fef96f6bef52c,
     type: 2}
   m_PrefabInternal: {fileID: 868724497}
+--- !u!135 &1440992612
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440992611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: -0.5, y: 0.5, z: -2}
 --- !u!114 &1440992613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +355,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -357,7 +369,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
@@ -426,6 +438,7 @@ MonoBehaviour:
   distLine: 15
   distCol: 15
   leaderPos: {x: 0, y: 0, z: -200}
+  shipsDestroyed: 0
 --- !u!4 &1898918810
 Transform:
   m_ObjectHideFlags: 0

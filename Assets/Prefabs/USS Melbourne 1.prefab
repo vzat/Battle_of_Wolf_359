@@ -579,12 +579,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4881722545574002}
   - component: {fileID: 114941193707583104}
+  - component: {fileID: 114172312154788208}
   - component: {fileID: 114883433127118074}
   - component: {fileID: 114687539456613856}
   - component: {fileID: 114839999111757554}
   - component: {fileID: 114554269023246424}
   - component: {fileID: 114382140153582902}
   - component: {fileID: 114896542772119292}
+  - component: {fileID: 135554525404079426}
   m_Layer: 0
   m_Name: USS Melbourne 1
   m_TagString: Untagged
@@ -1225,7 +1227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817672864137128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4854790153515574}
@@ -2923,6 +2925,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533296406628854}
   m_Mesh: {fileID: 4300018, guid: 4c28f4e181b35fc48a9afc06cffe830e, type: 3}
+--- !u!114 &114172312154788208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817672864137128}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  scale: 4
+  forwardFeelerDepth: 20
+  sideFeelerDepth: 10
+  frontFeelerUpdatesPerSecond: 10
+  sideFeelerUpdatesPerSecond: 5
+  feelerRadius: 2
+  forceType: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114382140153582902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3042,3 +3068,15 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetGameObj: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+--- !u!135 &135554525404079426
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817672864137128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 1, z: 0}
