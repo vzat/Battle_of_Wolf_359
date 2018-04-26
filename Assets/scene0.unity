@@ -295,6 +295,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1554401196631154, guid: 66f465d71a1777f4ea3fef96f6bef52c,
     type: 2}
   m_PrefabInternal: {fileID: 868724497}
+--- !u!135 &1440992612
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440992611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: -0.5, y: 0.5, z: -2}
 --- !u!114 &1440992613
 MonoBehaviour:
   m_ObjectHideFlags: 0

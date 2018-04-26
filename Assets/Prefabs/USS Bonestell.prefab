@@ -239,12 +239,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4671726496485094}
   - component: {fileID: 114667989215493898}
+  - component: {fileID: 114037652906143726}
   - component: {fileID: 114311301145123556}
   - component: {fileID: 114605531293491130}
   - component: {fileID: 114346726402450972}
   - component: {fileID: 114243503662940880}
   - component: {fileID: 114311015503951132}
   - component: {fileID: 114947040667515032}
+  - component: {fileID: 135711639666954054}
   m_Layer: 0
   m_Name: USS Bonestell
   m_TagString: Untagged
@@ -3775,7 +3777,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091684208798678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4585216059447372}
@@ -10426,6 +10428,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637548927110272}
   m_Mesh: {fileID: 4300014, guid: ddf78da4102cf28468edc49b8904f748, type: 3}
+--- !u!114 &114037652906143726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091684208798678}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  scale: 4
+  forwardFeelerDepth: 20
+  sideFeelerDepth: 10
+  frontFeelerUpdatesPerSecond: 10
+  sideFeelerUpdatesPerSecond: 5
+  feelerRadius: 2
+  forceType: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114243503662940880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10545,3 +10571,15 @@ MonoBehaviour:
   fleetManager: {fileID: 0}
   destroyed: 0
   escapePodsReleased: 0
+--- !u!135 &135711639666954054
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091684208798678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: -0.1, y: -0.5, z: 0}

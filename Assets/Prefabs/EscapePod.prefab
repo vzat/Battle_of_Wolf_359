@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4555560590285266}
   - component: {fileID: 114549526616843002}
   - component: {fileID: 114067979452635272}
+  - component: {fileID: 114575829179003320}
   - component: {fileID: 114890086162198940}
+  - component: {fileID: 135792167775752736}
   m_Layer: 0
   m_Name: EscapePod
   m_TagString: EscapePod
@@ -66,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626176223210546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -110}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4326121198373362}
@@ -155,6 +157,30 @@ MonoBehaviour:
   minMaxSpeed: 15
   maxMaxSpeed: 25
   jobSystemUpdate: 0
+--- !u!114 &114575829179003320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626176223210546}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  scale: 4
+  forwardFeelerDepth: 30
+  sideFeelerDepth: 15
+  frontFeelerUpdatesPerSecond: 10
+  sideFeelerUpdatesPerSecond: 5
+  feelerRadius: 2
+  forceType: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114890086162198940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,3 +192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f76b7de3d2d64e489f83617a8b9b756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135792167775752736
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626176223210546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Center: {x: 0.055, y: 0.05, z: -0.11}

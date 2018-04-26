@@ -37,12 +37,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4230758130467112}
   - component: {fileID: 114057143483425868}
+  - component: {fileID: 114534534594235860}
   - component: {fileID: 114157614464998882}
   - component: {fileID: 114640817593805704}
   - component: {fileID: 114619206588115090}
   - component: {fileID: 114369852787993860}
   - component: {fileID: 114355083683368008}
   - component: {fileID: 114951840353890238}
+  - component: {fileID: 135445327421804670}
   m_Layer: 0
   m_Name: USS Gage
   m_TagString: Untagged
@@ -57,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872465944913820}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2, y: -2, z: 0}
+  m_LocalPosition: {x: 3, y: -2, z: 3}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 4230758130467112}
@@ -70,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939422504654854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.4, y: 0, z: -112}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4110790669549756}
@@ -216,6 +218,30 @@ MonoBehaviour:
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 114157614464998882}
   leader: {fileID: 0}
+--- !u!114 &114534534594235860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939422504654854}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  scale: 4
+  forwardFeelerDepth: 20
+  sideFeelerDepth: 10
+  frontFeelerUpdatesPerSecond: 10
+  sideFeelerUpdatesPerSecond: 5
+  feelerRadius: 2
+  forceType: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114619206588115090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,8 +291,22 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 1764775069952842, guid: 6ff13dfb46e161246bbff34c57d80d1d,
     type: 2}
   captured: 0
+  maxStructuralIntegrity: 100
   structuralIntegrity: 100
   explosionPrefab: {fileID: 198832114822373568, guid: 908a855b6c026ee48943a2c837e20805,
     type: 2}
   fleetManager: {fileID: 0}
   destroyed: 0
+  escapePodsReleased: 0
+--- !u!135 &135445327421804670
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939422504654854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
