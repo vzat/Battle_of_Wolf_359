@@ -151,6 +151,7 @@ public class Boid : MonoBehaviour {
             velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
             if (velocity.magnitude > float.Epsilon) {
+                transform.LookAt(transform.position + velocity, Vector3.up);
                 velocity *= 0.99f;
             }
 
