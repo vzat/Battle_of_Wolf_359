@@ -146,6 +146,7 @@ public class FleetManager : MonoBehaviour {
             ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
             ship.AddComponent<Escape>();
             ship.GetComponent<Escape>().enabled = false;
+            ship.GetComponent<Escape>().weight = 2;
             ship.GetComponent<Ship>().fleetManager = this;
 
             // There are line * 2 + 1 ships per line
@@ -450,6 +451,8 @@ class Scene3 : State {
 
 class Scene4 : State {
     FleetManager fleetManager;
+    int initialShipsAlive;
+    int shipsToAttack;
 
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene4", LoadSceneMode.Single);
@@ -471,8 +474,11 @@ class Scene4 : State {
     public override void Enter() {
         fleetManager = owner.GetComponent<FleetManager>();
 
+        // Get inital no of ships alive
+        initialShipsAlive = fleetManager.ships.Count;
+
         // Set more ships to attack
-        int shipsToAttack = Random.Range(3, 5);
+        shipsToAttack = Random.Range(3, 5);
         for (int i = 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
             Boid ship = fleetManager.ships[i];
             ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
@@ -485,6 +491,93 @@ class Scene4 : State {
      }
 
     public override void Update() {
+        if (initialShipsAlive - fleetManager.ships.Count >= shipsToAttack) {
+            owner.ChangeState(new Scene5());
+        }
+    }
+
+    public override void Exit() {
+    }
+}
+
+class Scene5 : State {
+    FleetManager fleetManager;
+    GameObject camera;
+    FollowShip followShip;
+    FollowShipsAlive followShipsAlive;
+
+    int initialShipsAlive;
+    int shipsToAttack;
+
+    IEnumerator LoadScene() {
+        AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene5", LoadSceneMode.Single);
+
+        while (!asyncSceneChange.isDone) {
+            yield return null;
+        }
+
+        camera = GameObject.Find("Main Camera");
+        followShip = camera.GetComponent<FollowShip>();
+        followShipsAlive = camera.GetComponent<FollowShipsAlive>();
+
+        fleetManager.StartCoroutine(ChangeCamera());
+    }
+
+    IEnumerator ChangeCamera() {
+        while (true) {
+            if (Random.Range(-1, 1) >= 0) {
+                // Switch to Follow Ship Camera
+                followShip.enabled = true;
+                followShipsAlive.enabled = false;
+
+                // Setup Camera
+                followShip.enemy = fleetManager.borg;
+
+                int attackingShips = shipsToAttack - (fleetManager.ships.Count - initialShipsAlive);
+                followShip.ship = fleetManager.ships[(int)Random.Range(0, attackingShips)].gameObject;
+                followShip.distance = Random.Range(25, 50);
+            }
+            else {
+                // Switch to Follow Ships Alive Camera
+                followShip.enabled = false;
+                followShipsAlive.enabled = true;
+                followShipsAlive.transform.position = Random.insideUnitSphere * Random.Range(30, 50);
+            }
+
+            yield return new WaitForSeconds(Random.Range(5, 10));
+        }
+    }
+
+    void NextWave() {
+        // Set more ships to attack
+        shipsToAttack = Random.Range(3, 5);
+        for (int i = 0; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
+            Boid ship = fleetManager.ships[i];
+            ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
+            ship.maxSpeed = 20.0f;
+            ship.StartCoroutine(ship.ChangeSpeed());
+        }
+    }
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        // Get inital no of ships alive
+        initialShipsAlive = fleetManager.ships.Count;
+
+        // Create the next attacking wave
+        NextWave();
+
+        // Load the scene and wait for it to initiallise
+        fleetManager.StartCoroutine(LoadScene());
+    }
+
+    public override void Update() {
+        if (initialShipsAlive - fleetManager.ships.Count >= shipsToAttack) {
+            NextWave();
+        }
+
+
     }
 
     public override void Exit() {

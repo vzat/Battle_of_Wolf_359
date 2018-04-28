@@ -19,7 +19,7 @@ public class Ship : MonoBehaviour {
 
     LineRenderer phaser;
 
-    [HideInInspector]
+    
     public bool destroyed = false;
     public bool escapePodsReleased = false;
 
