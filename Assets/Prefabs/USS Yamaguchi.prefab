@@ -17949,7 +17949,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261762614097570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 0, z: -114.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4867037185687148}
@@ -18257,7 +18257,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538475041669898}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8, y: -9, z: -12}
+  m_LocalPosition: {x: 8, y: -9.5, z: -10}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4180503315450054}
@@ -44801,7 +44801,7 @@ MonoBehaviour:
   maxSpeed: 10
   mass: 1
   maxForce: 20
-  minMaxSpeed: 15
+  minMaxSpeed: 20
   maxMaxSpeed: 25
   jobSystemUpdate: 0
 --- !u!114 &114051291636184006

@@ -433,6 +433,7 @@ MonoBehaviour:
     type: 2}
   leader: {fileID: 0}
   ships: []
+  shipComp: []
   borg: {fileID: 0}
   fleetNo: 40
   distLine: 15

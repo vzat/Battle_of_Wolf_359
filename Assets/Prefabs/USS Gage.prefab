@@ -188,7 +188,7 @@ MonoBehaviour:
   maxSpeed: 10
   mass: 1
   maxForce: 20
-  minMaxSpeed: 15
+  minMaxSpeed: 20
   maxMaxSpeed: 25
   jobSystemUpdate: 0
 --- !u!114 &114355083683368008

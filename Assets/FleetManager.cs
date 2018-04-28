@@ -206,7 +206,9 @@ public class FleetManager : MonoBehaviour {
             }
 
             if (ship.velocity.magnitude > float.Epsilon) {
-                ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
+                if (!shipComp[i].captured) { // NOT WORKING
+                    ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
+                }
                 ship.velocity *= 0.99f;
             }
 

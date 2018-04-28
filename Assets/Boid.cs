@@ -12,9 +12,8 @@ public class Boid : MonoBehaviour {
     public float mass = 1;
     public float maxForce = 20.0f;
 
-    [HideInInspector]
-    public float minMaxSpeed = 15.0f;
-    public float maxMaxSpeed = 25.0f;
+    public float minMaxSpeed = 25.0f;
+    public float maxMaxSpeed = 30.0f;
 
     public bool jobSystemUpdate = false;
 
@@ -59,7 +58,7 @@ public class Boid : MonoBehaviour {
 
         Vector3 desired = Vector3.Cross(toTarget, randomDir) * maxSpeed;
 
-        return desired;
+        return desired - velocity;
     }
 
     public bool AccumulateForce(ref Vector3 runningTotal, ref Vector3 force) {
@@ -82,12 +81,14 @@ public class Boid : MonoBehaviour {
 
     public IEnumerator ChangeSpeed() {
         while (true) {
-            float speedDif = Random.Range(-5, 5);
+            //float speedDif = Random.Range(-5, 5);
 
-            maxSpeed += speedDif;
+            //maxSpeed += speedDif;
 
-            maxSpeed = maxSpeed < minMaxSpeed ? minMaxSpeed : maxSpeed;
-            maxSpeed = maxSpeed > maxMaxSpeed ? maxMaxSpeed : maxSpeed;
+            //maxSpeed = maxSpeed < minMaxSpeed ? minMaxSpeed : maxSpeed;
+            //maxSpeed = maxSpeed > maxMaxSpeed ? maxMaxSpeed : maxSpeed;
+
+            maxSpeed = Random.Range(minMaxSpeed, maxMaxSpeed);
 
             yield return new WaitForSeconds(Random.Range(1, 5));
         }
