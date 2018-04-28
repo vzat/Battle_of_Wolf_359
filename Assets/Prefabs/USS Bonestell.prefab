@@ -10439,7 +10439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 2
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
   scale: 4
@@ -10448,7 +10448,7 @@ MonoBehaviour:
   frontFeelerUpdatesPerSecond: 10
   sideFeelerUpdatesPerSecond: 5
   feelerRadius: 2
-  forceType: 0
+  forceType: 1
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10499,7 +10499,7 @@ MonoBehaviour:
   maxSpeed: 10
   mass: 1
   maxForce: 20
-  minMaxSpeed: 15
+  minMaxSpeed: 20
   maxMaxSpeed: 25
   jobSystemUpdate: 0
 --- !u!114 &114346726402450972

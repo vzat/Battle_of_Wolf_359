@@ -19,6 +19,7 @@ public class FleetManager : MonoBehaviour {
     [HideInInspector]
     public GameObject leader;
     public List<Boid> ships = new List<Boid>();
+    public List<Ship> shipComp = new List<Ship>();
     public GameObject borg;
 
     StateMachine stateMachine;
@@ -40,6 +41,7 @@ public class FleetManager : MonoBehaviour {
 
         // Remove ship from list
         ships.RemoveAt(shipNo);
+        shipComp.RemoveAt(shipNo);
 
         // Recreate the velocities array
         List<Vector3> tempVelocities = new List<Vector3>(velocities.ToArray());
@@ -155,6 +157,7 @@ public class FleetManager : MonoBehaviour {
             Boid shipBoid = ship.GetComponent<Boid>();
             shipBoid.jobSystemUpdate = true;
             ships.Add(shipBoid);
+            shipComp.Add(ship.GetComponent<Ship>());
             shipsPerLine++;
 
             if (i == 0) {
@@ -199,10 +202,14 @@ public class FleetManager : MonoBehaviour {
             Vector3 bankUp = accelUp + globalUp;
             smoothRate = Time.deltaTime * 5.0f;
             Vector3 tempUp = ship.transform.up;
-            tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
+            if (!shipComp[i].captured) {
+                tempUp = Vector3.Lerp(tempUp, bankUp, smoothRate);
+            }
 
             if (ship.velocity.magnitude > float.Epsilon) {
-                ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
+                if (!shipComp[i].captured) {
+                    ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
+                }
                 ship.velocity *= 0.99f;
             }
 
@@ -322,7 +329,7 @@ class Scene2 : State {
         borg.capturedShip = null;
         borg.targetShip = null;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         isMelbourneDestroyed = true;
     }

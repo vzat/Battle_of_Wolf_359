@@ -303,7 +303,7 @@ SphereCollider:
   m_GameObject: {fileID: 1440992611}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: -0.5, y: 0.5, z: -2}
@@ -433,6 +433,7 @@ MonoBehaviour:
     type: 2}
   leader: {fileID: 0}
   ships: []
+  shipComp: []
   borg: {fileID: 0}
   fleetNo: 40
   distLine: 15

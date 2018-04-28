@@ -93,12 +93,12 @@ public class Ship : MonoBehaviour {
     IEnumerator FireWeapons() {
         yield return new WaitForSeconds(2);
         while (true) {
-            if (Vector3.Distance(this.transform.position, Vector3.zero) < 30.0f) {
+            if (Vector3.Distance(this.transform.position, Vector3.zero) < 30.0f && !captured) {
                 firePos = Random.insideUnitSphere * 3.0f;
 
                 if (Random.Range(-1, 1) >= 0) {
                     firePhaser = true;
-                    yield return new WaitForSeconds(Random.Range(2, 4));
+                    yield return new WaitForSeconds(Random.Range(1, 2));
                     firePhaser = false;
                 }
                 else {
@@ -121,7 +121,7 @@ public class Ship : MonoBehaviour {
                     fireTorpedoes = false;
                 }
             }
-            yield return new WaitForSeconds(Random.Range(1, 5));
+            yield return new WaitForSeconds(Random.Range(1, 3));
         }
     }
 }
