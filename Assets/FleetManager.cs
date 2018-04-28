@@ -41,6 +41,7 @@ public class FleetManager : MonoBehaviour {
 
         // Remove ship from list
         ships.RemoveAt(shipNo);
+        shipComp.RemoveAt(shipNo);
 
         // Recreate the velocities array
         List<Vector3> tempVelocities = new List<Vector3>(velocities.ToArray());
@@ -206,7 +207,7 @@ public class FleetManager : MonoBehaviour {
             }
 
             if (ship.velocity.magnitude > float.Epsilon) {
-                if (!shipComp[i].captured) { // NOT WORKING
+                if (!shipComp[i].captured) {
                     ship.transform.LookAt(ship.transform.position + ship.velocity, tempUp);
                 }
                 ship.velocity *= 0.99f;
