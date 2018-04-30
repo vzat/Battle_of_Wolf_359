@@ -50,6 +50,12 @@ class Scene1 : State {
         mainCamera.target = fleetManager.GetComponent<GameObject>();
 
         videoPlayed = false;
+
+        //foreach (Ship ship in fleetManager.shipComp) {
+        //    ship.audioSource.loop = true;
+        //    ship.audioSource.clip = fleetManager.flybySound;
+        //    ship.audioSource.Play();
+        //}
     }
 
     public override void Update() {
@@ -92,21 +98,25 @@ class Scene2 : State {
     }
 
     IEnumerator DestroyMelbourne() {
-        yield return new WaitForSeconds(Random.Range(10, 15));
+        yield return new WaitForSeconds(Random.Range(5, 10));
 
         Borg borg = fleetManager.borg.GetComponent<Borg>();
         borg.capturedShip = borg.ships[1];
         borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
+        borg.tractorBeamAudioSource.Play();
 
         yield return new WaitForSeconds(Random.Range(2, 3));
 
         borg.targetShip = borg.ships[1];
+        borg.cuttingBeamAudioSource.Play();
 
         yield return new WaitForSeconds(Random.Range(3, 4));
 
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
         borg.capturedShip = null;
         borg.targetShip = null;
+        borg.tractorBeamAudioSource.Stop();
+        borg.cuttingBeamAudioSource.Stop();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -174,13 +184,14 @@ class Scene3 : State {
     }
 
     IEnumerator DestroySaratoga() {
-        yield return new WaitForSeconds(Random.Range(10, 15));
+        yield return new WaitForSeconds(Random.Range(5, 10));
 
         Borg borg = fleetManager.borg.GetComponent<Borg>();
         borg.capturedShip = borg.ships[0];
         borg.capturedShip.GetComponent<StateMachine>().ChangeState(new CapturedState(borg.gameObject));
+        borg.tractorBeamAudioSource.Play();
 
-        yield return new WaitForSeconds(Random.Range(4, 7));
+        yield return new WaitForSeconds(Random.Range(2, 4));
 
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = 50.0f;
 
@@ -202,6 +213,7 @@ class Scene3 : State {
         borg.capturedShip.GetComponent<Ship>().structuralIntegrity = -100.0f;
         followShip.ship = borg.gameObject;
         borg.capturedShip = null;
+        borg.tractorBeamAudioSource.Stop();
     }
 
     public override void Enter() {

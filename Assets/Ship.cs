@@ -24,7 +24,7 @@ public class Ship : MonoBehaviour {
 
     IEnumerator fireWeapons;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
@@ -37,6 +37,8 @@ public class Ship : MonoBehaviour {
 
         fireWeapons = FireWeapons();
         StartCoroutine(fireWeapons);
+
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -58,6 +60,8 @@ public class Ship : MonoBehaviour {
             ParticleSystem explosion = Instantiate(explosionPrefab);
             explosion.transform.position = this.transform.position;
             explosion.Play();
+
+            audioSource.PlayOneShot(fleetManager.explosionSounds[(int)Random.Range(0, 2)]);
 
             this.GetComponent<StateMachine>().ChangeState(new DestroyedState(explosion.main.duration));
 
@@ -99,7 +103,18 @@ public class Ship : MonoBehaviour {
 
                 if (Random.Range(-1, 1) >= 0) {
                     firePhaser = true;
+
+                    // Play Audio
+                    audioSource.PlayOneShot(fleetManager.phaserSounds[(int)Random.Range(0, 5)]);
+                    //audioSource.clip = fleetManager.phaserSound;
+                    //audioSource.loop = true;
+                    //audioSource.Play();
+
                     yield return new WaitForSeconds(Random.Range(1, 2));
+
+                    // Stop Audio
+                    audioSource.Stop();
+
                     firePhaser = false;
                 }
                 else {
@@ -115,6 +130,8 @@ public class Ship : MonoBehaviour {
 
                         Torpedo torpedoObj = torpedo.GetComponent<Torpedo>();
                         torpedoObj.destination = firePos;
+
+                        audioSource.PlayOneShot(fleetManager.torpedoSound);
 
                         yield return new WaitForSeconds(0.1f);
                     }

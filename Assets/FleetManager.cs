@@ -29,6 +29,12 @@ public class FleetManager : MonoBehaviour {
     public Vector3 leaderPos = new Vector3(0, 0, -200);
     public int shipsDestroyed = 0;
 
+    public AudioClip phaserSound;
+    public AudioClip torpedoSound;
+    public AudioClip flybySound;
+    public AudioClip[] explosionSounds = new AudioClip[3];
+    public AudioClip[] phaserSounds = new AudioClip[6];
+
     // Job System
     Transform[] transforms;
     JobHandle positionJobHandle;

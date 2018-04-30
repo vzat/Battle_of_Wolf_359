@@ -176,7 +176,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -211,7 +211,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   fleetManager: {fileID: 0}
   destroyed: 0
   escapePodsReleased: 0
+  audioSource: {fileID: 0}
 --- !u!135 &135445327421804670
 SphereCollider:
   m_ObjectHideFlags: 1

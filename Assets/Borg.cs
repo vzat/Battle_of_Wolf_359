@@ -21,6 +21,13 @@ public class Borg : MonoBehaviour {
 
     FleetManager fleetManager;
 
+    public AudioSource cuttingBeamAudioSource;
+    public AudioSource tractorBeamAudioSource;
+
+    public AudioClip cuttingBeamSound;
+    public AudioClip tractorBeamSound;
+    public AudioClip flyby;
+
     bool left = false;
 
     IEnumerator TractorBeamTarget() {
@@ -29,6 +36,11 @@ public class Borg : MonoBehaviour {
             if (capturedShip != null) {
                 capturedShip.GetComponent<Ship>().captured = false;
                 capturedShip = null;
+            }
+
+            // Stop Sound
+            if (tractorBeamAudioSource.isPlaying) {
+                tractorBeamAudioSource.Stop();
             }
 
             yield return new WaitForSeconds(Random.Range(2, 4));
@@ -58,6 +70,9 @@ public class Borg : MonoBehaviour {
                      shipStateMachine.state.GetType().Name == "EscapeState")) {
                         shipStateMachine.ChangeState(new CapturedState(gameObject));
                         tractorBeamSource = Random.insideUnitSphere * 3.0f;
+
+                        // Play Sound
+                        tractorBeamAudioSource.Play();
                 }
                 else {
                     capturedShip = null;
@@ -75,6 +90,11 @@ public class Borg : MonoBehaviour {
                 targetShip.GetComponent<Ship>().structuralIntegrity -= Random.Range(50, 150);
             }
             targetShip = null;
+
+            // Stop Sound
+            if (cuttingBeamAudioSource.isPlaying) {
+                cuttingBeamAudioSource.Stop();
+            }
 
             yield return new WaitForSeconds(Random.Range(1, 2));
 
@@ -104,6 +124,10 @@ public class Borg : MonoBehaviour {
 
                     if (Vector3.Distance(targetShip.transform.position, transform.position) < 35.0f) {
                         cuttingBeamSource = Random.insideUnitSphere * 3.0f;
+
+                        // Play Sound
+                        //cuttingBeamAudioSource.Play();
+                        cuttingBeamAudioSource.PlayOneShot(cuttingBeamSound);
                     }
                     else {
                         targetShip = null;
@@ -156,6 +180,17 @@ public class Borg : MonoBehaviour {
         cuttingBeam.endWidth = 0.5f;
 
         //StartCoroutine(CuttingBeamTarget());
+
+        // Setup Audio Sources
+        cuttingBeamAudioSource = this.GetComponents<AudioSource>()[0];
+        tractorBeamAudioSource = this.GetComponents<AudioSource>()[1];
+
+        cuttingBeamAudioSource.clip = cuttingBeamSound;
+        cuttingBeamAudioSource.loop = true;
+
+        tractorBeamAudioSource.clip = tractorBeamSound;
+        tractorBeamAudioSource.volume = 0.5f;
+        tractorBeamAudioSource.loop = true;
     }
 	
 	// Update is called once per frame
@@ -184,6 +219,9 @@ public class Borg : MonoBehaviour {
             gameObject.AddComponent<Boid>();
             gameObject.AddComponent<Seek>();
             gameObject.GetComponent<Seek>().target = new Vector3(0, 0, 1000);
+            gameObject.GetComponent<Boid>().maxSpeed = 50.0f;
+
+            cuttingBeamAudioSource.PlayOneShot(flyby);
         }
 	}
 }

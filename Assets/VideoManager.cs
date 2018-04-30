@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class VideoManager : MonoBehaviour {
     GameObject camera;
@@ -15,17 +16,20 @@ public class VideoManager : MonoBehaviour {
     public void PlayVideo(string videoUrl) {
         playingVideo = true;
         camera = GameObject.Find("Main Camera");
-        var videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
+        VideoPlayer videoPlayer = camera.AddComponent<VideoPlayer>();
+        AudioSource audioSource = camera.AddComponent<AudioSource>();
         videoPlayer.playOnAwake = false;
-        videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.CameraNearPlane;
+        videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
         videoPlayer.url = videoUrl;
         videoPlayer.EnableAudioTrack(0, true);
+        videoPlayer.SetTargetAudioSource(0, audioSource);
         videoPlayer.loopPointReached += EndReached;
         videoPlayer.Play();
+        audioSource.Play();
     }
 
-    void EndReached(UnityEngine.Video.VideoPlayer vp) {
+    void EndReached(VideoPlayer vp) {
         playingVideo = false;
-        Destroy(camera.GetComponent<UnityEngine.Video.VideoPlayer>());
+        Destroy(camera.GetComponent<VideoPlayer>());
     }
 }
