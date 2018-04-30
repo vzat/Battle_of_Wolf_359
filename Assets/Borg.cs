@@ -21,6 +21,8 @@ public class Borg : MonoBehaviour {
 
     FleetManager fleetManager;
 
+    bool left = false;
+
     IEnumerator TractorBeamTarget() {
         yield return new WaitForSeconds(Random.Range(2, 3));
         while (true) {
@@ -174,6 +176,14 @@ public class Borg : MonoBehaviour {
         else {
             cuttingBeam.SetPosition(0, this.transform.position);
             cuttingBeam.SetPosition(1, this.transform.position);
+        }
+
+        // Leave after all the enemies have been destroyed
+        if (ships.Count == 0 && !left) {
+            left = true;
+            gameObject.AddComponent<Boid>();
+            gameObject.AddComponent<Seek>();
+            gameObject.GetComponent<Seek>().target = new Vector3(0, 0, 1000);
         }
 	}
 }

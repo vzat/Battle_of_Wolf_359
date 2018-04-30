@@ -19,11 +19,12 @@ public class Ship : MonoBehaviour {
 
     LineRenderer phaser;
 
-    
     public bool destroyed = false;
     public bool escapePodsReleased = false;
 
     IEnumerator fireWeapons;
+
+    AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
