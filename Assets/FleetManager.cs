@@ -35,28 +35,39 @@ public class FleetManager : MonoBehaviour {
     TransformAccessArray transformAccessArray;
     NativeArray<Vector3> velocities;
 
+    List<Boid> shipsToDestroy = new List<Boid>();
+
     public void RemoveShip(Boid ship) {
-        // Get ship no
-        int shipNo = ships.IndexOf(ship);
+        shipsToDestroy.Add(ship);
+    }
 
-        // Remove ship from list
-        ships.RemoveAt(shipNo);
-        shipComp.RemoveAt(shipNo);
+    void RemoveShipsFromList() {
+        foreach (Boid ship in shipsToDestroy) {
+            // Get ship no
+            int shipNo = ships.IndexOf(ship);
 
-        // Recreate the velocities array
-        List<Vector3> tempVelocities = new List<Vector3>(velocities.ToArray());
-        tempVelocities.RemoveAt(shipNo);
-        velocities.Dispose();
-        velocities = new NativeArray<Vector3>(ships.Count, Allocator.Persistent);
-        velocities.CopyFrom(tempVelocities.ToArray());
+            // Remove ship from list
+            ships.RemoveAt(shipNo);
+            shipComp.RemoveAt(shipNo);
 
-        // Remove from transfrom access array
-        transformAccessArray.Dispose();
-        Transform[] tempTransforms = new Transform[ships.Count];
-        for (int i = 0; i < ships.Count; i++) {
-            tempTransforms[i] = ships[i].transform;
+            // Recreate the velocities array
+            List<Vector3> tempVelocities = new List<Vector3>(velocities.ToArray());
+            tempVelocities.RemoveAt(shipNo);
+            velocities.Dispose();
+            velocities = new NativeArray<Vector3>(ships.Count, Allocator.Persistent);
+            velocities.CopyFrom(tempVelocities.ToArray());
+
+            // Remove from transfrom access array
+            transformAccessArray.Dispose();
+            Transform[] tempTransforms = new Transform[ships.Count];
+            for (int i = 0; i < ships.Count; i++) {
+                tempTransforms[i] = ships[i].transform;
+            }
+            transformAccessArray = new TransformAccessArray(tempTransforms);
         }
-        transformAccessArray = new TransformAccessArray(tempTransforms);
+        shipsToDestroy.Clear();
+
+        Debug.Log(shipsToDestroy.Count);
     }
 
     struct PositionUpdateJob : IJobParallelForTransform {
@@ -146,6 +157,7 @@ public class FleetManager : MonoBehaviour {
             ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
             ship.AddComponent<Escape>();
             ship.GetComponent<Escape>().enabled = false;
+            ship.GetComponent<Escape>().weight = 2;
             ship.GetComponent<Ship>().fleetManager = this;
 
             // There are line * 2 + 1 ships per line
@@ -177,6 +189,8 @@ public class FleetManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        RemoveShipsFromList();
+
         // Put the job before so it can process in parallel
         PositionUpdateJob positionJob = new PositionUpdateJob() {
             velocity = velocities,
@@ -214,6 +228,11 @@ public class FleetManager : MonoBehaviour {
             }
 
             velocities[i] = ship.velocity;
+
+            if (i < 5) {
+                Debug.Log(i + " " + ship.GetComponent<StateMachine>().state.GetType().Name);
+
+            }
         }
     }
 
@@ -450,6 +469,8 @@ class Scene3 : State {
 
 class Scene4 : State {
     FleetManager fleetManager;
+    int initialShipsAlive;
+    int shipsToAttack;
 
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene4", LoadSceneMode.Single);
@@ -471,8 +492,11 @@ class Scene4 : State {
     public override void Enter() {
         fleetManager = owner.GetComponent<FleetManager>();
 
+        // Get inital no of ships alive
+        initialShipsAlive = fleetManager.ships.Count;
+
         // Set more ships to attack
-        int shipsToAttack = Random.Range(3, 5);
+        shipsToAttack = Random.Range(3, 5);
         for (int i = 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
             Boid ship = fleetManager.ships[i];
             ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
@@ -485,6 +509,105 @@ class Scene4 : State {
      }
 
     public override void Update() {
+        if (initialShipsAlive - fleetManager.ships.Count >= shipsToAttack) {
+            owner.ChangeState(new Scene5());
+        }
+    }
+
+    public override void Exit() {
+    }
+}
+
+class Scene5 : State {
+    FleetManager fleetManager;
+    GameObject camera;
+    FollowShip followShip;
+    FollowShipsAlive followShipsAlive;
+
+    int initialShipsAlive;
+    int shipsToAttack;
+
+    IEnumerator LoadScene() {
+        AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene5", LoadSceneMode.Single);
+
+        while (!asyncSceneChange.isDone) {
+            yield return null;
+        }
+
+        camera = GameObject.Find("Main Camera");
+        followShip = camera.GetComponent<FollowShip>();
+        followShipsAlive = camera.GetComponent<FollowShipsAlive>();
+
+        fleetManager.StartCoroutine(ChangeCamera());
+    }
+
+    IEnumerator ChangeCamera() {
+        while (true) {
+            if (Random.Range(-1, 1) >= 0) {
+                // Switch to Follow Ship Camera
+                followShip.enabled = true;
+                followShipsAlive.enabled = false;
+
+                // Setup Camera
+                followShip.enemy = fleetManager.borg;
+
+                int attackingShips = shipsToAttack - (fleetManager.ships.Count - initialShipsAlive);
+                followShip.ship = fleetManager.ships[(int)Random.Range(0, attackingShips)].gameObject;
+                followShip.distance = Random.Range(25, 50);
+            }
+            else {
+                // Switch to Follow Ships Alive Camera
+                followShip.enabled = false;
+                followShipsAlive.enabled = true;
+                followShipsAlive.transform.position = Random.insideUnitSphere * Random.Range(30, 50);
+            }
+
+            yield return new WaitForSeconds(Random.Range(5, 10));
+        }
+    }
+
+    void NextWave() {
+        // Set more ships to attack
+        shipsToAttack = Random.Range(3, 10);
+
+        int attackingShips = 0;
+        for (int i = 0; i < fleetManager.ships.Count && attackingShips < shipsToAttack; i++) {
+            Boid ship = fleetManager.ships[i];
+            StateMachine stateMachine = ship.GetComponent<StateMachine>();
+
+            if (stateMachine.state.GetType().Name == "IdleState") {
+                ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
+                ship.maxSpeed = 20.0f;
+                ship.StartCoroutine(ship.ChangeSpeed());
+                attackingShips++;
+            }
+        }
+
+        // Remove the no of ships attacking if the no exceeds the total no of ships
+        shipsToAttack = attackingShips < shipsToAttack ? attackingShips : shipsToAttack;
+
+        initialShipsAlive = fleetManager.ships.Count;
+    }
+
+    public override void Enter() {
+        fleetManager = owner.GetComponent<FleetManager>();
+
+        // Get inital no of ships alive
+        initialShipsAlive = fleetManager.ships.Count;
+
+        // Create the next attacking wave
+        NextWave();
+
+        // Load the scene and wait for it to initiallise
+        fleetManager.StartCoroutine(LoadScene());
+    }
+
+    public override void Update() {
+        if (initialShipsAlive - fleetManager.ships.Count >= shipsToAttack) {
+            NextWave();
+        }
+
+
     }
 
     public override void Exit() {

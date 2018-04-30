@@ -229,7 +229,7 @@ public class WreckState : State {
         boid.acceleration = Vector3.zero;
         boid.velocity = Vector3.zero;
 
-        velocity = fromEnemy;
+        velocity = fromEnemy * 1.0f;
     }
 
     public override void Update() {
