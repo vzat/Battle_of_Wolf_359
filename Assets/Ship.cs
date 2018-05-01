@@ -61,11 +61,28 @@ public class Ship : MonoBehaviour {
             firePhaser = false;
             fireTorpedoes = false;
 
+            // Create explosion
             ParticleSystem explosion = Instantiate(explosionPrefab);
             explosion.transform.position = this.transform.position;
             explosion.Play();
 
+            // Play explosion sound
             audioSource.PlayOneShot(fleetManager.explosionSounds[(int)Random.Range(0, 2)]);
+
+            // Change Ship colour
+            MeshRenderer[] meshRenderers = this.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer meshRenderer in meshRenderers) {
+                //if (Random.Range(0, 2) >= 1) {
+                //    meshRenderer.material.color = Color.black;
+                //}
+                foreach (Material material in meshRenderer.materials) {
+                    material.color = Color.Lerp(Color.black, Color.grey, Random.Range(0.0f, 1.0f));
+                }
+
+                if (Random.Range(1, 10) >= 9) {
+                    meshRenderer.enabled = false;
+                }
+            }
 
             this.GetComponent<StateMachine>().ChangeState(new DestroyedState(explosion.main.duration));
 

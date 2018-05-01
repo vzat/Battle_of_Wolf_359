@@ -652,6 +652,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a369eaf5f1d75744a9cf263b90b927c1, type: 3}
   introMusic: {fileID: 8300000, guid: f89bd9043e8535945885fcc3df11d9b2, type: 3}
   battleMusic: {fileID: 8300000, guid: 65c78b2b1d1fc0540a609c8505eef1a7, type: 3}
+  audioSource: {fileID: 0}
 --- !u!4 &1898918810
 Transform:
   m_ObjectHideFlags: 0

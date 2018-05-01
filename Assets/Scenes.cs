@@ -41,7 +41,7 @@ class Scene1 : State {
         for (int i = 0; i < fleetManager.ships.Count && i < 3; i++) {
             Boid ship = fleetManager.ships[i];
             ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
-            ship.maxSpeed = 20.0f;
+            ship.maxSpeed = Random.Range(20.0f, 30.0f);
             ship.StartCoroutine(ship.ChangeSpeed());
         }
 
@@ -278,7 +278,7 @@ class Scene4 : State {
         for (int i = 1; i < fleetManager.ships.Count && i < shipsToAttack; i++) {
             Boid ship = fleetManager.ships[i];
             ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
-            ship.maxSpeed = 20.0f;
+            ship.maxSpeed = Random.Range(20.0f, 30.0f);
             ship.StartCoroutine(ship.ChangeSpeed());
         }
 
@@ -358,7 +358,7 @@ class Scene5 : State {
 
             if (stateMachine.state.GetType().Name == "IdleState") {
                 ship.GetComponent<StateMachine>().ChangeState(new AttackState(fleetManager.borg));
-                ship.maxSpeed = 20.0f;
+                ship.maxSpeed = Random.Range(20.0f, 30.0f);
                 ship.StartCoroutine(ship.ChangeSpeed());
                 attackingShips++;
             }

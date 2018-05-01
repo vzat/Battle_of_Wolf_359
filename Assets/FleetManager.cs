@@ -162,7 +162,7 @@ public class FleetManager : MonoBehaviour {
 
             GameObject ship = Instantiate<GameObject>(prefab);
             ship.transform.parent = this.transform;
-            ship.transform.position = leader.transform.position + new Vector3((shipsPerLine - line) * (distCol + Random.Range(0, 5)), Random.Range(-5, 5), - (line - 1) * (distLine + Random.Range(0, 5)));
+            ship.transform.position = leader.transform.position + new Vector3((shipsPerLine - line) * (distCol + Random.Range(0, 5)), Random.Range(-8, 8), - (line - 1) * (distLine + Random.Range(0, 5)));
 
             ship.GetComponent<StateMachine>().ChangeState(new FollowLeader(leader.GetComponent<Boid>()));
             ship.AddComponent<Escape>();
