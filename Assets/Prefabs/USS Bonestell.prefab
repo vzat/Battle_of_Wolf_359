@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 114311015503951132}
   - component: {fileID: 114947040667515032}
   - component: {fileID: 135711639666954054}
+  - component: {fileID: 82504820214002658}
   m_Layer: 0
   m_Name: USS Bonestell
   m_TagString: Untagged
@@ -10428,6 +10429,101 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637548927110272}
   m_Mesh: {fileID: 4300014, guid: ddf78da4102cf28468edc49b8904f748, type: 3}
+--- !u!82 &82504820214002658
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091684208798678}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114037652906143726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10439,15 +10535,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 1
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
-  scale: 4
-  forwardFeelerDepth: 20
-  sideFeelerDepth: 10
+  scale: 7
+  forwardFeelerDepth: 30
+  sideFeelerDepth: 20
   frontFeelerUpdatesPerSecond: 10
   sideFeelerUpdatesPerSecond: 5
-  feelerRadius: 2
+  feelerRadius: 3
   forceType: 1
   mask:
     serializedVersion: 2
@@ -10571,6 +10667,7 @@ MonoBehaviour:
   fleetManager: {fileID: 0}
   destroyed: 0
   escapePodsReleased: 0
+  audioSource: {fileID: 0}
 --- !u!135 &135711639666954054
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 114382140153582902}
   - component: {fileID: 114896542772119292}
   - component: {fileID: 135554525404079426}
+  - component: {fileID: 82308549409870038}
   m_Layer: 0
   m_Name: USS Melbourne 1
   m_TagString: Untagged
@@ -2925,6 +2926,101 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533296406628854}
   m_Mesh: {fileID: 4300018, guid: 4c28f4e181b35fc48a9afc06cffe830e, type: 3}
+--- !u!82 &82308549409870038
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817672864137128}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114172312154788208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2936,15 +3032,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643d7dd63b087304b9a6a392a3586ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 1
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
-  scale: 4
-  forwardFeelerDepth: 20
-  sideFeelerDepth: 10
+  scale: 7
+  forwardFeelerDepth: 30
+  sideFeelerDepth: 20
   frontFeelerUpdatesPerSecond: 10
   sideFeelerUpdatesPerSecond: 5
-  feelerRadius: 2
+  feelerRadius: 3
   forceType: 1
   mask:
     serializedVersion: 2
@@ -3052,6 +3148,7 @@ MonoBehaviour:
   fleetManager: {fileID: 0}
   destroyed: 0
   escapePodsReleased: 0
+  audioSource: {fileID: 0}
 --- !u!114 &114941193707583104
 MonoBehaviour:
   m_ObjectHideFlags: 1

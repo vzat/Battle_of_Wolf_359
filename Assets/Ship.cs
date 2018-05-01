@@ -19,11 +19,14 @@ public class Ship : MonoBehaviour {
 
     LineRenderer phaser;
 
-    
     public bool destroyed = false;
     public bool escapePodsReleased = false;
 
     IEnumerator fireWeapons;
+
+    public AudioSource audioSource;
+
+    VideoManager videoManager;
 
     // Use this for initialization
     void Start () {
@@ -36,6 +39,10 @@ public class Ship : MonoBehaviour {
 
         fireWeapons = FireWeapons();
         StartCoroutine(fireWeapons);
+
+        audioSource = GetComponent<AudioSource>();
+
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
     }
 	
 	// Update is called once per frame
@@ -54,9 +61,28 @@ public class Ship : MonoBehaviour {
             firePhaser = false;
             fireTorpedoes = false;
 
+            // Create explosion
             ParticleSystem explosion = Instantiate(explosionPrefab);
             explosion.transform.position = this.transform.position;
             explosion.Play();
+
+            // Play explosion sound
+            audioSource.PlayOneShot(fleetManager.explosionSounds[(int)Random.Range(0, 2)]);
+
+            // Change Ship colour
+            MeshRenderer[] meshRenderers = this.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer meshRenderer in meshRenderers) {
+                //if (Random.Range(0, 2) >= 1) {
+                //    meshRenderer.material.color = Color.black;
+                //}
+                foreach (Material material in meshRenderer.materials) {
+                    material.color = Color.Lerp(Color.black, Color.grey, Random.Range(0.0f, 1.0f));
+                }
+
+                if (Random.Range(1, 10) >= 9) {
+                    meshRenderer.enabled = false;
+                }
+            }
 
             this.GetComponent<StateMachine>().ChangeState(new DestroyedState(explosion.main.duration));
 
@@ -88,6 +114,9 @@ public class Ship : MonoBehaviour {
             phaser.SetPosition(0, transform.position);
             phaser.SetPosition(1, transform.position);
         }
+
+        // Disable Sound During Video
+        audioSource.volume = videoManager.playingVideo ? 0.0f : 1.0f;
     }
 
     IEnumerator FireWeapons() {
@@ -98,7 +127,18 @@ public class Ship : MonoBehaviour {
 
                 if (Random.Range(-1, 1) >= 0) {
                     firePhaser = true;
+
+                    // Play Audio
+                    audioSource.PlayOneShot(fleetManager.phaserSounds[(int)Random.Range(0, 5)]);
+                    //audioSource.clip = fleetManager.phaserSound;
+                    //audioSource.loop = true;
+                    //audioSource.Play();
+
                     yield return new WaitForSeconds(Random.Range(1, 2));
+
+                    // Stop Audio
+                    audioSource.Stop();
+
                     firePhaser = false;
                 }
                 else {
@@ -114,6 +154,8 @@ public class Ship : MonoBehaviour {
 
                         Torpedo torpedoObj = torpedo.GetComponent<Torpedo>();
                         torpedoObj.destination = firePos;
+
+                        audioSource.PlayOneShot(fleetManager.torpedoSound);
 
                         yield return new WaitForSeconds(0.1f);
                     }
