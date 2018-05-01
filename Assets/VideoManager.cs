@@ -16,16 +16,21 @@ public class VideoManager : MonoBehaviour {
     public void PlayVideo(string videoUrl) {
         playingVideo = true;
         camera = GameObject.Find("Main Camera");
-        VideoPlayer videoPlayer = camera.AddComponent<VideoPlayer>();
-        AudioSource audioSource = camera.AddComponent<AudioSource>();
+        //VideoPlayer videoPlayer = camera.AddComponent<VideoPlayer>();
+        //AudioSource audioSource = camera.AddComponent<AudioSource>();
+        VideoPlayer videoPlayer = camera.GetComponent<VideoPlayer>();
+        AudioSource audioSource = camera.GetComponent<AudioSource>();
         videoPlayer.playOnAwake = false;
         videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
         videoPlayer.url = videoUrl;
-        videoPlayer.EnableAudioTrack(0, true);
-        videoPlayer.SetTargetAudioSource(0, audioSource);
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        //videoPlayer.EnableAudioTrack(0, true);
+        //videoPlayer.SetTargetAudioSource(0, audioSource);
         videoPlayer.loopPointReached += EndReached;
         videoPlayer.Play();
         audioSource.Play();
+        
+        Debug.Log("Audio: " + videoPlayer.audioTrackCount);
     }
 
     void EndReached(VideoPlayer vp) {

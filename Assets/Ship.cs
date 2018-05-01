@@ -26,6 +26,8 @@ public class Ship : MonoBehaviour {
 
     public AudioSource audioSource;
 
+    VideoManager videoManager;
+
     // Use this for initialization
     void Start () {
         gameObject.AddComponent<LineRenderer>();
@@ -39,6 +41,8 @@ public class Ship : MonoBehaviour {
         StartCoroutine(fireWeapons);
 
         audioSource = GetComponent<AudioSource>();
+
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
     }
 	
 	// Update is called once per frame
@@ -93,6 +97,9 @@ public class Ship : MonoBehaviour {
             phaser.SetPosition(0, transform.position);
             phaser.SetPosition(1, transform.position);
         }
+
+        // Disable Sound During Video
+        audioSource.volume = videoManager.playingVideo ? 0.0f : 1.0f;
     }
 
     IEnumerator FireWeapons() {

@@ -51,6 +51,11 @@ class Scene1 : State {
 
         videoPlayed = false;
 
+        fleetManager.audioSource.Stop();
+        fleetManager.audioSource.clip = fleetManager.battleMusic;
+        fleetManager.audioSource.loop = true;
+        fleetManager.audioSource.Play();
+
         //foreach (Ship ship in fleetManager.shipComp) {
         //    ship.audioSource.loop = true;
         //    ship.audioSource.clip = fleetManager.flybySound;
@@ -108,7 +113,8 @@ class Scene2 : State {
         yield return new WaitForSeconds(Random.Range(2, 3));
 
         borg.targetShip = borg.ships[1];
-        borg.cuttingBeamAudioSource.Play();
+        //borg.cuttingBeamAudioSource.Play();
+        borg.cuttingBeamAudioSource.PlayOneShot(borg.cuttingBeamSound);
 
         yield return new WaitForSeconds(Random.Range(3, 4));
 
@@ -299,6 +305,8 @@ class Scene5 : State {
     int initialShipsAlive;
     int shipsToAttack;
 
+    IEnumerator changeCamera;
+
     IEnumerator LoadScene() {
         AsyncOperation asyncSceneChange = SceneManager.LoadSceneAsync("scene5", LoadSceneMode.Single);
 
@@ -310,7 +318,8 @@ class Scene5 : State {
         followShip = camera.GetComponent<FollowShip>();
         followShipsAlive = camera.GetComponent<FollowShipsAlive>();
 
-        fleetManager.StartCoroutine(ChangeCamera());
+        changeCamera = ChangeCamera();
+        fleetManager.StartCoroutine(changeCamera);
     }
 
     IEnumerator ChangeCamera() {
@@ -385,6 +394,7 @@ class Scene5 : State {
     }
 
     public override void Exit() {
+        fleetManager.StopCoroutine(changeCamera);
     }
 }
 

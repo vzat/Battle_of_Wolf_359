@@ -30,6 +30,8 @@ public class Borg : MonoBehaviour {
 
     bool left = false;
 
+    VideoManager videoManager;
+
     IEnumerator TractorBeamTarget() {
         yield return new WaitForSeconds(Random.Range(2, 3));
         while (true) {
@@ -191,6 +193,8 @@ public class Borg : MonoBehaviour {
         tractorBeamAudioSource.clip = tractorBeamSound;
         tractorBeamAudioSource.volume = 0.5f;
         tractorBeamAudioSource.loop = true;
+
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
     }
 	
 	// Update is called once per frame
@@ -221,7 +225,14 @@ public class Borg : MonoBehaviour {
             gameObject.GetComponent<Seek>().target = new Vector3(0, 0, 1000);
             gameObject.GetComponent<Boid>().maxSpeed = 50.0f;
 
-            cuttingBeamAudioSource.PlayOneShot(flyby);
+            //cuttingBeamAudioSource.PlayOneShot(flyby);
+            cuttingBeamAudioSource.loop = true;
+            cuttingBeamAudioSource.clip = flyby;
+            cuttingBeamAudioSource.Play();
         }
-	}
+
+        // Disable Sound During Video
+        cuttingBeamAudioSource.volume = videoManager.playingVideo ? 0.0f : 1.0f;
+        tractorBeamAudioSource.volume = videoManager.playingVideo ? 0.0f : 0.25f;
+    }
 }

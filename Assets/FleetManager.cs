@@ -34,6 +34,8 @@ public class FleetManager : MonoBehaviour {
     public AudioClip flybySound;
     public AudioClip[] explosionSounds = new AudioClip[3];
     public AudioClip[] phaserSounds = new AudioClip[6];
+    public AudioClip introMusic;
+    public AudioClip battleMusic;
 
     // Job System
     Transform[] transforms;
@@ -42,6 +44,10 @@ public class FleetManager : MonoBehaviour {
     NativeArray<Vector3> velocities;
 
     List<Boid> shipsToDestroy = new List<Boid>();
+
+    public AudioSource audioSource;
+
+    VideoManager videoManager;
 
     public void RemoveShip(Boid ship) {
         shipsToDestroy.Add(ship);
@@ -72,8 +78,6 @@ public class FleetManager : MonoBehaviour {
             transformAccessArray = new TransformAccessArray(tempTransforms);
         }
         shipsToDestroy.Clear();
-
-        Debug.Log(shipsToDestroy.Count);
     }
 
     struct PositionUpdateJob : IJobParallelForTransform {
@@ -191,6 +195,12 @@ public class FleetManager : MonoBehaviour {
         }
 
         transformAccessArray = new TransformAccessArray(transforms);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = introMusic;
+        audioSource.Play();
+
+        videoManager = GameObject.Find("VideoManager").GetComponent<VideoManager>();
     }
 	
 	// Update is called once per frame
@@ -234,12 +244,9 @@ public class FleetManager : MonoBehaviour {
             }
 
             velocities[i] = ship.velocity;
-
-            if (i < 5) {
-                Debug.Log(i + " " + ship.GetComponent<StateMachine>().state.GetType().Name);
-
-            }
         }
+
+        audioSource.volume = videoManager.playingVideo ? 0.25f : 1.0f;
     }
 
     void LateUpdate() {
